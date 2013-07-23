@@ -1,1 +1,1 @@
-tsc --out scripts/target/app.js scripts/ts/hello.ts
+tsc --out scripts/target/app.js scripts/ts/*
