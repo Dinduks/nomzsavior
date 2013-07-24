@@ -2,14 +2,11 @@
 /// <reference path="functions.ts" />
 
 $(document).ready(function () {
-  checkForLocalStorage();
+  AppStorage.checkForLocalStorage();
   setCurrentScreenIfNeeded();
 
   $("#main-container").on("click", function (): bool {
-    var mainContainer: ZeptoCollection = $("#main-container");
-    var targetLeftPosition: number = (getCurrentScreen() - 2) * 100;
-    switchScreens(mainContainer, targetLeftPosition);
-
+    switchScreens();
     return false;
   });
 });
