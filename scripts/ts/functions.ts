@@ -8,10 +8,10 @@ function setCurrentScreenIfNeeded(): void {
 }
 
 function switchScreens(): void {
-  var mainContainer: ZeptoCollection = $("#main-container");
+  var screens: ZeptoCollection = $("#screens-container");
   var targetLeftPosition: number = (AppStorage.getCurrentScreen() - 2) * 100;
 
-  mainContainer.animate({
+  screens.animate({
     left:  targetLeftPosition + "%"
   }, 300);
 

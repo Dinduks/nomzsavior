@@ -2,10 +2,12 @@
 /// <reference path="functions.ts" />
 
 $(document).ready(function () {
+  var screensContainer = $("#screens-container");
+
   AppStorage.checkForLocalStorage();
   setCurrentScreenIfNeeded();
 
-  $("#main-container").on("click", function (): bool {
+  screensContainer.on("click", function (): bool {
     switchScreens();
     return false;
   });
