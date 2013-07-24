@@ -1,6 +1,6 @@
 module AppStorage {
   export function getCurrentScreen(): number {
-    return localStorage.getItem("currentScreen");
+    return parseInt(localStorage.getItem("currentScreen"));
   }
 
   export function setCurrentScreen(screenNumber: number): void {
