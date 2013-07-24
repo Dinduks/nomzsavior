@@ -7,3 +7,6 @@
 `./build.sh`
 
 *Don't forget building the application before each deployment!*
+
+## Run the tests
+`open run-specs.html`

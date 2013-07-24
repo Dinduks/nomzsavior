@@ -1,4 +1,4 @@
-/// <reference path="zepto.d.ts" />
+/// <reference path="../definitions/zepto.d.ts" />
 /// <reference path="appstorage.ts" />
 
 function setCurrentScreenIfNeeded(): void {
