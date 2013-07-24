@@ -2,8 +2,8 @@
 /// <reference path="../src/appstorage.ts" />
 
 describe("getCurrentScreen()", function() {
-  AppStorage.setCurrentScreen(42);
   it("returns the current screen", function() {
+    AppStorage.setCurrentScreen(42);
     expect(AppStorage.getCurrentScreen()).toEqual(42);
   });
 });
