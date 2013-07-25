@@ -1,12 +1,13 @@
 # Mange pas ça
 
+## Requirements
+You need npm & grunt.
+
 ## Setup
-`npm install -g typescript`
+`npm install`
 
-## Compiling the TypeScript scripts
-`./build.sh`
-
-*Don't forget building the application before each deployment!*
+## Compiling the TypeScript scripts with hot reloading !
+`grunt`
 
 ## Run the tests
 `open run-specs.html`
