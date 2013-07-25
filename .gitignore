@@ -1,1 +1,5 @@
-scripts/target/*
+*.DS_Store
+*~
+*#*
+scripts/target
+node_modules
