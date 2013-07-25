@@ -11,7 +11,7 @@ module.exports = function(grunt) {
         typescript: {
             base: {
                 src: ['scripts/ts/src/**/*.ts'],
-                dest: 'scripts/target/',
+                dest: 'scripts/target/app.js',
                 options: {
                     base_path: 'scripts/ts/src/'
                 }
