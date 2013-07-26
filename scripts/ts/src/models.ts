@@ -13,6 +13,23 @@ class Item {
     else if (quantity < 1) throw "Quantity must be greater than 1.";
     else this.quantity = quantity;
   }
+
+  // expirationDate in the day : 3
+  // expirationDate in the week : 2
+  // expirationDate more than a week  : 1
+  getPriority() {
+    var now = new Date()
+    var priority = 0;
+    var diff = this.expirationDate.getDate() - now.getDate()
+    if (diff <= 1) {
+      priority = 3;
+    } else if (diff <= 7) {
+      priority = 2;
+    } else {
+      priority = 1;
+    }
+    return priority;
+  }
 }
 
 /* Items that the user currently owns */
