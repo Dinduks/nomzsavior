@@ -147,11 +147,13 @@ body {
   left:0;
 }
 #screens-container div.screen {
-  position:absolute;
-  width:50%;
-  height:100%;
-  top:0;
-  left:0;
+    position:absolute;
+    width:50%;
+    height:100%;
+    top:0;
+    left:0;
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
 }
 #screens-container div.screen.left {
   background-color: #343434;
