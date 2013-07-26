@@ -30,7 +30,7 @@ window.mainScreen = {
 
         function switchDeleteIcon(t) {
             return Zanimo(t).then(function (t) {
-                    return Zanimo.transition(t, 'left', t.style.left == "-84px" ? '0': '-84px', 100);
+                    return Zanimo.transition(t, 'left', t.style.left == "-42px" ? '0': '-42px', 100);
             });
         }
 
