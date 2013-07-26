@@ -22,7 +22,7 @@ body {
 .item-list li div {
   display: inline-block;
   vertical-align: top;
-  text-shadow: 1px 2px rgba(0, 0, 0, .2);
+  text-shadow: 0 2px rgba(0, 0, 0, .2);
 }
 
 /* Number of items */
@@ -97,7 +97,6 @@ body {
 /* -- Add screen -- */
 .add-field input {
   background-color: #f5f5f5;
-  width: 100%;
   height: 50px;
   font-family: 'TitilliumRegular', sans-serif;
   margin: 0;
@@ -114,12 +113,16 @@ body {
           box-sizing: border-box;
 }
 
+.top-fields input[type="text"] { width: 80%; }
+.top-fields input[type="number"] { width: 18%; }
+.top-fields input[type="date"] { width: 100%; }
+
 .confirm input[type="submit"] {
   background-color: #72b970;
   text-transform: uppercase;
   font: 21px/21px 'TitilliumRegular', sans-serif;
   color: #fff;
-  text-shadow: 1px 2px rgba(0, 0, 0, .2);
+  text-shadow: 0 2px rgba(0, 0, 0, .2);
   border: none;
   display: block;
   width: 100%;
