@@ -36,13 +36,14 @@ describe("ItemsCollection: size, add, remove, removeById, getNth", function() {
     items = new ItemsCollection();
     expect(items.size()).toEqual(0);
 
-    item0 = new Item("foo", date1, 9000)
-    item1 = new Item("bar", date2, 666)
+    item0 = new Item("foo", date1, 1);
+    item1 = new Item("bar", date2, 1);
 
     items.add(item0);
     expect(items.size()).toEqual(1);
 
     items.add(item1);
+    console.log(items.size());
     expect(items.size()).toEqual(2);
 
     item2 = items.getNth(0);
@@ -122,26 +123,6 @@ describe("ItemsCollection.sort()", function() {
     expect(items.getNth(1).name).toEqual("1");
     expect(items.getNth(2).name).toEqual("2");
     expect(items.getNth(3).name).toEqual("3");
-  });
-});
-
-describe("ItemsCollection.add", function() {
-  var item0, item1, item2: Item;
-  var items: ItemsCollection;
-  var date, date1, date2: Date;
-
-  it("merges items with the same name and the same date", function () {
-    date = new Date();
-    items = new ItemsCollection();
-    item0 = new Item("foo", date);
-    item1 = new Item("foo", date, 9);
-
-    items.add(item0);
-    expect(items.size()).toEqual(1);
-
-    items.add(item1);
-    expect(items.size()).toEqual(1);
-    expect(items.getNth(0).quantity).toEqual(10);
   });
 });
 
