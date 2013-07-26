@@ -70,10 +70,17 @@ class ItemsCollection {
   }
 
   removeById(id: string) {
-    this.collection = this.collection.filter(function(item) {
-      return item.id != id;
-    });
-    AppStorage.save(this.name, this.collection);
+    for (var i = 0; i < this._size; i++) {
+      if (this.collection[i]["id"] == id) {
+        if (this.collection[i]["quantity"] == 1) this.collection.splice(i, 1);
+        else this.collection[i]["quantity"] = this.collection[i]["quantity"] - 1;
+
+        this._size--;
+        return;
+      }
+    }
+
+    AppStorage.save(name, this.collection);
     AppStorage.save("size", this._size);
   }
 
@@ -87,6 +94,7 @@ class ItemsCollection {
         return;
       }
     }
+
     AppStorage.save(this.name, this.collection);
     AppStorage.save("size", this._size);
   }
