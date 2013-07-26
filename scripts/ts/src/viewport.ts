@@ -1,12 +1,9 @@
 /// <reference path="../definitions/zepto.d.ts" />
-/// <reference path="../src/appstorage.ts" />
+
+window["viewport"] = {};
 
 $("#add-item-btn").on("click", function () {
-    var targetLeftPosition = (AppStorage.getCurrentScreen() - 2) * 100;
-    $("#main-container").animate({ left:  targetLeftPosition + "%" },
-      300,
-      "linear",
-      function () { AppStorage.swapScreens(); });
+    window["viewport"].switchPanel();
 
     return true;
 });
