@@ -71,14 +71,14 @@ body {
 }
 .item-list .delete img {
   margin: auto;
-  padding-top: 14px;
+  padding-top: 18px;
   display: block;
 }
 
 /* Add item */
 .item-list .add { background-color: #f5f5f5; }
 .item-list .add .case-item { background-color: #ebebeb; }
-.item-list .add .case-item img { padding-top: 20px; }
+.item-list .add .case-item img { padding-top: 14px; }
 .item-list .add .item { color: #333333; text-shadow: none; font-weight: bold; }
 #add-item-btn { cursor: pointer; }
 
@@ -131,6 +131,7 @@ body {
   margin-bottom: 2px;
   font-weight: bold;
 }
+.confirm button:disabled { background-color: #e6e6e6; }
 
 .confirm .return {
   background-color: #b3b3b3;
@@ -145,11 +146,6 @@ body {
   margin-bottom: 2px;
   font-weight: bold;
 }
-
-.confirm input[type="submit"]:disabled {
-  background-color: #e6e6e6;
-}
-
 
 
 
