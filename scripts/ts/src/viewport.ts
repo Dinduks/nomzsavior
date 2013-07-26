@@ -11,14 +11,17 @@ $(document).ready(function () {
     window["viewport"].switchPanel()
       .then(function () { $("#title").get(0).focus(); });
 
+    return false;
+  });
+
   $("#submit-btn").on("click", function () {
     var item: Item;
     var title: string;
-    var date: number;
+    var date: string;
     var quantity: number;
 
     title = $("#title").val();
-    date = new Date($("#date-picker").val()).getTime();
+    date  = String(new Date($("#date-picker").val()).getTime());
     quantity = parseInt($("#quantity").val());
 
     item = new Item(title, date, quantity);

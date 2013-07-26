@@ -1,10 +1,12 @@
+/// <reference path="../src/appstorage.ts" />
+
 class Item {
   id: string;
   name: string;
-  expirationDate: number;
+  expirationDate: string;
   quantity: number;
 
-  constructor(name: string, expirationDate: number, quantity?: number) {
+  constructor(name: string, expirationDate: string, quantity?: number) {
     this.id = String((new Date()).getTime() + Math.floor(Math.random() * 10000));
     this.name = name;
     this.expirationDate = expirationDate;
@@ -19,10 +21,10 @@ class Item {
   // expirationDate in the week : returns 2
   // expirationDate more than a week  : returns 1
   getPriority() {
-    var now = new Date()
+    var now = new Date();
     var priority = 0;
-    var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
-    var diff = Math.round(Math.abs((this.expirationDate.getTime() - now.getTime())/(oneDay)));
+    var oneDay: number = 24*60*60*1000; // hours*minutes*seconds*milliseconds
+    var diff = Math.round(Math.abs((parseInt(this.expirationDate) - now.getTime()) / oneDay));
 
     if (diff <= 2) {
       priority = 3;
