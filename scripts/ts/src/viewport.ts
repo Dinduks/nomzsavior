@@ -32,7 +32,6 @@ $(document).ready(function () {
     return false;
   });
 });
-});
 
 function setDateToTomorrow() {
   var date = new Date();
