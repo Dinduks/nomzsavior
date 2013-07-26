@@ -14,14 +14,15 @@ class Item {
     else this.quantity = quantity;
   }
 
-  // expirationDate in the day : 3
-  // expirationDate in the week : 2
-  // expirationDate more than a week  : 1
+  // the sooner the expirationDate arrives, the higher the priority is.
+  // When the expirationDate is in less than two days : returns 3
+  // expirationDate in the week : returns 2
+  // expirationDate more than a week  : returns 1
   getPriority() {
     var now = new Date()
     var priority = 0;
     var diff = this.expirationDate.getDate() - now.getDate()
-    if (diff <= 1) {
+    if (diff <= 2) {
       priority = 3;
     } else if (diff <= 7) {
       priority = 2;
