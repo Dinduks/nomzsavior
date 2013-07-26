@@ -1,10 +1,10 @@
 class Item {
   id: string;
   name: string;
-  expirationDate: Date;
+  expirationDate: number;
   quantity: number;
 
-  constructor(name: string, expirationDate: Date, quantity?: number) {
+  constructor(name: string, expirationDate: number, quantity?: number) {
     this.id = String((new Date()).getTime() + Math.floor(Math.random() * 10000));
     this.name = name;
     this.expirationDate = expirationDate;
@@ -52,6 +52,7 @@ class ItemsCollection {
       var current = this.collection[i];
       if (current.name == item.name && current.expirationDate == item.expirationDate) {
         current.quantity += item.quantity;
+        this._size += item.quantity;
         return;
       }
     }
@@ -120,8 +121,8 @@ class ItemsCollection {
     while (!weGood) {
       weGood = true;
       for (var i = 0; i < this.collection.length - 1; i++) {
-        if (this.collection[i].expirationDate.getTime() >
-            this.collection[i+1].expirationDate.getTime()) {
+        if (this.collection[i].expirationDate >
+            this.collection[i+1].expirationDate) {
           weGood = false;
           tmp = this.collection[i];
           this.collection[i] = this.collection[i+1];
