@@ -73,7 +73,7 @@ class ItemsCollection {
     this.collection = this.collection.filter(function(item) {
       return item.id != id;
     });
-    AppStorage.save(name, this.collection);
+    AppStorage.save(this.name, this.collection);
     AppStorage.save("size", this._size);
   }
 
