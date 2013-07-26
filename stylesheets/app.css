@@ -8,9 +8,9 @@ body {
 .item-list li {
   list-style: none;
   position: relative;
-  height: 50px;
+  height: 60px;
   width: 100%;
-  margin-bottom: 1px;
+  margin-bottom: 2px;
 }
 
 .item-list .inner {
@@ -22,14 +22,14 @@ body {
 .item-list li div {
   display: inline-block;
   vertical-align: top;
-  text-shadow: 0 2px rgba(0, 0, 0, .2);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, .2);
 }
 
 /* Number of items */
 .item-list .case-item {
-  width: 50px;
-  height: 50px;
-  font-size: 24px;
+  width: 60px;
+  height: 60px;
+  font-size: 28px;
   line-height: 16px;
   color: #fff;
   text-align: center;
@@ -37,24 +37,24 @@ body {
 
 .item-list .case-item .parent {
   display: block;
-  padding-top: 9px;
+  padding-top: 14px;
 }
 
 .item-list .case-item .month {
   text-transform: uppercase;
-  font-size: 10px;
+  font-size: 12px;
 }
 
 /* Title of product */
 .item-list .item {
-  font-size: 16px;
-  line-height: 49px;
+  font-size: 18px;
+  line-height: 60px;
   color: #fff;
   padding-left: 15px;
 }
 
 .item-list .item span {
-  font-size: 12px;
+  font-size: 14px;
   line-height: 12px;
   color: #e5e5e5;
 }
@@ -78,8 +78,8 @@ body {
 /* Add item */
 .item-list .add { background-color: #f5f5f5; }
 .item-list .add .case-item { background-color: #ebebeb; }
-.item-list .add .case-item img { padding-top: 8px; }
-.item-list .add .item { color: #333333; text-shadow: none; }
+.item-list .add .case-item img { padding-top: 20px; }
+.item-list .add .item { color: #333333; text-shadow: none; font-weight: bold; }
 #add-item-btn { cursor: pointer; }
 
 /* Red item */
@@ -97,14 +97,15 @@ body {
 /* -- Add screen -- */
 .add-field input {
   background-color: #f5f5f5;
-  height: 50px;
+  height: 60px;
   font-family: 'TitilliumRegular', sans-serif;
   margin: 0;
   padding: 0 0 0 20px;
   border: 0;
   outline: 0;
   color: #343434;
-  font-size: 16px;
+  font-size: 18px;
+  line-height: 60px;
 
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
@@ -117,16 +118,32 @@ body {
 .top-fields input[type="number"] { width: 18%; }
 .top-fields input[type="date"] { width: 100%; }
 
-.confirm input[type="submit"] {
+.confirm button {
   background-color: #72b970;
   text-transform: uppercase;
   font: 21px/21px 'TitilliumRegular', sans-serif;
   color: #fff;
-  text-shadow: 0 2px rgba(0, 0, 0, .2);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, .2);
   border: none;
   display: block;
   width: 100%;
-  height: 50px;
+  height: 60px;
+  margin-bottom: 2px;
+  font-weight: bold;
+}
+
+.confirm .return {
+  background-color: #b3b3b3;
+  text-transform: uppercase;
+  font: 21px/21px 'TitilliumRegular', sans-serif;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+  border: none;
+  display: block;
+  width: 100%;
+  height: 60px;
+  margin-bottom: 2px;
+  font-weight: bold;
 }
 
 .confirm input[type="submit"]:disabled {
