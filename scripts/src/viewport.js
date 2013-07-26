@@ -33,7 +33,12 @@ $(document).ready(function () {
 
     $("#title").on("keypress", function (event) {
         if (event.keyCode == 13 && $(this).val() !== "") submitForm();
-        return true;
+    });
+    $("#date-picker").on("keypress", function (event) {
+        if (event.keyCode == 13 && $(this).val() !== "") submitForm();
+    });
+    $("#quantity").on("keypress", function (event) {
+        if (event.keyCode == 13 && $(this).val() !== "") submitForm();
     });
 
     $("#submit-btn").on("click", function () { submitForm(); return true; });
