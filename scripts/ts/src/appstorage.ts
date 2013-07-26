@@ -1,4 +1,5 @@
 module AppStorage {
+
   export function getCurrentScreen(): number {
     return parseInt(localStorage.getItem("currentScreen"));
   }
@@ -20,5 +21,13 @@ module AppStorage {
       alert("Local Storage is required.\nPlease enable cookies.");
       return false;
     }
+  }
+
+  export function save(id, items): void {
+    localStorage.setItem(id, JSON.stringify(items));
+  }
+
+  export function get(id) {
+    return JSON.parse(localStorage.getItem(id));
   }
 }

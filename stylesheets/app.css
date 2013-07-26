@@ -1,8 +1,93 @@
 body {
+  background-color: #343434;
   height: 100%;
   width: 100%;
+  font-family: 'TitilliumRegular', sans-serif;
 }
 
+.hidden { display: none !important; }
+
+/* Items */
+.item-list li {
+  position: relative;
+  height: 100px;
+  width: 100%;
+  margin-bottom: 1px;
+}
+
+.item-list .inner {
+  position: relative;
+  width: 100%;
+  z-index: 100;
+}
+
+.item-list li div {
+  display: inline-block;
+  vertical-align: top;
+  text-shadow: 1px 2px rgba(0, 0, 0, .2);
+}
+
+/* Number of items */
+.item-list .case-item {
+  width: 100px;
+  height: 100%;
+  font-size: 48px;
+  line-height: 100px;
+  color: #fff;
+  text-align: center;
+}
+
+/* Title of product */
+.item-list .item {
+  font-size: 32px;
+  line-height: 98px;
+  color: #fff;
+  padding-left: 30px;
+}
+
+/* Delete shortcut */
+.item-list .delete {
+  background-color: #343434;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  width: 84px;
+  height: 100%;
+}
+.item-list .delete img {
+  margin: auto;
+  padding-top: 28px;
+  display: block;
+}
+
+/* Add item */
+.item-list .add { background-color: #f5f5f5; }
+.item-list .add .case-item { background-color: #ebebeb; }
+.item-list .add .case-item img { padding-top: 16px; }
+.item-list .add .item { color: #333333; text-shadow: none; }
+
+/* Red item */
+.item-list .red { background-color: #f26e6e; }
+.item-list .red .case-item { background-color: #cb5757; }
+
+/* Orange item */
+.item-list .orange { background-color: #f2905c; }
+.item-list .orange .case-item { background-color: #d17a4b; }
+
+/* Green item */
+.item-list .green { background-color: #72b970; }
+.item-list .green .case-item { background-color: #599a57; }
+
+
+
+
+
+
+
+
+
+/* Default */
 #main-container {
   height: 100%;
   width: 100%;
@@ -34,5 +119,5 @@ body {
 }
 
 #screens-container div.screen.left {
-    background-color:blue;
+    /*background-color:blue;*/
 }
