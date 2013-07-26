@@ -30,13 +30,14 @@ describe("Item.constructor()", function() {
 describe("ItemsCollection: size, add, remove, removeById, getNth", function() {
   var item0, item1, item2: Item;
   var items: ItemsCollection;
+  var date1, date2: Date;
 
   it("returns the size of the collection", function() {
     items = new ItemsCollection();
     expect(items.size()).toEqual(0);
 
-    item0 = new Item("foo", new Date(), 9000)
-    item1 = new Item("bar", new Date(), 666)
+    item0 = new Item("foo", date1, 9000)
+    item1 = new Item("bar", date2, 666)
     items.add(item0);
     expect(items.size()).toEqual(1);
 
@@ -68,5 +69,25 @@ describe("ItemsCollection: size, add, remove, removeById, getNth", function() {
     item2 = null;
     item2 = items.get(item0["id"]);
     expect(item2.name).toEqual("foo");
+  });
+
+describe("ItemsCollection.add", function() {
+    var item0, item1, item2: Item;
+    var items: ItemsCollection;
+    var date, date1, date2: Date;
+
+    it("merges items with the same name and the same date", function () {
+      date = new Date();
+      items = new ItemsCollection();
+      item0 = new Item("foo", date);
+      item1 = new Item("foo", date, 9);
+
+      items.add(item0);
+      expect(items.size()).toEqual(1);
+
+      items.add(item1);
+      expect(items.size()).toEqual(1);
+      expect(items.getNth(0).quantity).toEqual(10);
+    });
   });
 });
