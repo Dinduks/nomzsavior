@@ -43,7 +43,6 @@ describe("ItemsCollection: size, add, remove, removeById, getNth", function() {
     expect(items.size()).toEqual(1);
 
     items.add(item1);
-    console.log(items.size());
     expect(items.size()).toEqual(2);
 
     item2 = items.getNth(0);
