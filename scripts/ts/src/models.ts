@@ -22,7 +22,7 @@ class ItemsCollection {
 
   constructor() {
     this.collection = AppStorage.get(name) || [];
-    this._size = AppStorage.get('size') || 0
+    this._size = AppStorage.get('size') || 0;
   }
 
   add(item: Item) {
@@ -88,6 +88,8 @@ class ItemsCollection {
         return this.collection[i];
       }
     }
+
+    return null;
   }
 }
 

@@ -73,11 +73,13 @@ describe("ItemsCollection: size, add, remove, removeById, getNth", function() {
 });
 
 describe("ItemsCollection: remove, removeById, size", function() {
-  var item: Item = new Item("foo", new Date(), 2);
-  var item1: Item = new Item("bar", new Date(), 10);
-  var items: ItemsCollection = new ItemsCollection();
-
   it("decreases the quantity of the item", function () {
+    localStorage.clear();
+
+    var item: Item = new Item("foo", new Date(), 2);
+    var item1: Item = new Item("bar", new Date(), 10);
+    var items: ItemsCollection = new ItemsCollection();
+
     items.add(item);
     expect(items.size()).toEqual(2);
 
