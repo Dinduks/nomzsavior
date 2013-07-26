@@ -18,9 +18,11 @@ class Item {
 class ItemsCollection {
   private collection: Item[];
   private _size: number = 0;
+  private name = "items";
 
   constructor() {
-    this.collection = [];
+    this.collection = AppStorage.get(name) || [];
+    this._size = AppStorage.get('size') || 0
   }
 
   add(item: Item) {
@@ -39,6 +41,8 @@ class ItemsCollection {
   private append(item: Item) {
     this._size += item.quantity;
     this.collection.push(item);
+    AppStorage.save(name, this.collection);
+    AppStorage.save("size", this._size);
   }
 
   removeById(id: string) {
@@ -48,10 +52,11 @@ class ItemsCollection {
         else this.collection[i]["quantity"] = this.collection[i]["quantity"] - 1;
 
         this._size--;
-
         return;
       }
     }
+    AppStorage.save(name, this.collection);
+    AppStorage.save("size", this._size);
   }
 
   remove(item: Item) {
@@ -64,6 +69,8 @@ class ItemsCollection {
         return;
       }
     }
+    AppStorage.save(name, this.collection);
+    AppStorage.save("size", this._size);
   }
 
   size(): number {
@@ -77,12 +84,10 @@ class ItemsCollection {
 
   get(id: string): Item {
     for (var i = 0; i < this._size; i++) {
-      if (this.collection[i]["id"] == id) {
+      if (this.collection[i].id == id) {
         return this.collection[i];
       }
     }
-
-    throw "Item not found";
   }
 }
 
