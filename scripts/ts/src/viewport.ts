@@ -7,11 +7,8 @@ window["items"] = new ItemsCollection();
 $(document).ready(function () {
   setDateToTomorrow();
 
-  $("#add-item-btn").on("click", function () {
-    window["viewport"].switchPanel()
-      .then(function () { $("#title").get(0).focus(); });
-
-    return false;
+  $(".return").on("click", function () {
+    window['viewport'].switchPanel();
   });
 
   $("#submit-btn").on("click", function () {

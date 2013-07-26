@@ -78,6 +78,7 @@ window.mainScreen = {
         return li;
     },
     render : function () {
+
         var self = this,
             ul = document.querySelector('.item-list ul');
             li = document.createElement('li'),
@@ -102,5 +103,10 @@ window.mainScreen = {
         items.collection.forEach(function (item) {
             ul.appendChild(self._item(item));
         });
+
+        $("#add-item-btn").on("click", function () {
+            window["viewport"].switchPanel().then(function () { $("#title").get(0).focus(); });
+            return false;
+      });
     }
 };
