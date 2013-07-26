@@ -36,8 +36,9 @@ describe("ItemsCollection: size, add, remove, removeById, getNth", function() {
     items = new ItemsCollection();
     expect(items.size()).toEqual(0);
 
-    item0 = new Item("foo", date1, 1);
-    item1 = new Item("bar", date2, 1);
+    item0 = new Item("foo", date1, 9000)
+    item1 = new Item("bar", date2, 666)
+
     items.add(item0);
     expect(items.size()).toEqual(1);
 
@@ -96,30 +97,82 @@ describe("ItemsCollection: remove, removeById, size", function() {
     items.removeById(item1["id"]);
     expect(items.size()).toEqual(9);
   });
+});
 
-  describe("ItemsCollection.sort()", function() {
-    localStorage.clear();
+describe("ItemsCollection.sort()", function() {
+  localStorage.clear();
 
-    var item0, item1, item2, item3, item4: Item;
-    var items: ItemsCollection = new ItemsCollection();
+  var item0, item1, item2, item3, item4: Item;
+  var items: ItemsCollection = new ItemsCollection();
 
-    it("correctly sorts the items of the collection", function () {
-      item0 = new Item("0", new Date(2013, 0, 1));
-      item1 = new Item("1", new Date(2013, 1, 1));
-      item2 = new Item("2", new Date(2013, 2, 1));
-      item3 = new Item("3", new Date(2013, 3, 1));
+  it("correctly sorts the items of the collection", function () {
+    item0 = new Item("0", new Date(2013, 0, 1));
+    item1 = new Item("1", new Date(2013, 1, 1));
+    item2 = new Item("2", new Date(2013, 2, 1));
+    item3 = new Item("3", new Date(2013, 3, 1));
 
-      items.add(item1);
-      items.add(item3);
-      items.add(item2);
-      items.add(item0);
+    items.add(item1);
+    items.add(item3);
+    items.add(item2);
+    items.add(item0);
 
-      items.sort();
+    items.sort();
 
-      expect(items.getNth(0).name).toEqual("0");
-      expect(items.getNth(1).name).toEqual("1");
-      expect(items.getNth(2).name).toEqual("2");
-      expect(items.getNth(3).name).toEqual("3");
-    });
+    expect(items.getNth(0).name).toEqual("0");
+    expect(items.getNth(1).name).toEqual("1");
+    expect(items.getNth(2).name).toEqual("2");
+    expect(items.getNth(3).name).toEqual("3");
+  });
+});
+
+describe("ItemsCollection.add", function() {
+  var item0, item1, item2: Item;
+  var items: ItemsCollection;
+  var date, date1, date2: Date;
+
+  it("merges items with the same name and the same date", function () {
+    date = new Date();
+    items = new ItemsCollection();
+    item0 = new Item("foo", date);
+    item1 = new Item("foo", date, 9);
+
+    items.add(item0);
+    expect(items.size()).toEqual(1);
+
+    items.add(item1);
+    expect(items.size()).toEqual(1);
+    expect(items.getNth(0).quantity).toEqual(10);
+  });
+});
+
+describe("ItemsCache", function() {
+  var cache: ItemsCache;
+  cache = new ItemsCache();
+  cache.addItem("lemon", 2);
+  cache.addItem("tomato", 3);
+  cache.addItem("orange", 10);
+  cache.addItem("lemon", 1);
+
+  it("getMostPopularItems", function () {
+    var popularItems = cache.getMostPopularItems();
+    var limit = popularItems.length - 1;
+    for (var i=0; i <limit; ++i) {
+      expect(popularItems.length).toEqual(3);
+      expect(popularItems[i].quantity >= popularItems[i+1].quantity).toEqual(true);
+    }
+  });
+
+  it("getMostPopularItems with a limit of numberOfItems", function () {
+    var popularItems = cache.getMostPopularItems(2);
+    var limit = popularItems.length - 1;
+    for (var i=0; i <limit; ++i) {
+      expect(popularItems.length).toEqual(2);
+      expect(popularItems[i].quantity >= popularItems[i+1].quantity).toEqual(true);
+    }
+  });
+
+  it("getMostPopularItems filtered by name", function () {
+    var popularItems = cache.getMostPopularItemsByName("m");
+    expect(popularItems.length).toEqual(2);
   });
 });
