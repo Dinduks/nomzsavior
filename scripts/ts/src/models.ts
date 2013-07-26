@@ -24,14 +24,16 @@ class ItemsCollection {
   }
 
   add(item: Item) {
-    this._size++;
+    this._size += item.quantity;
     this.collection.push(item);
   }
 
   removeById(id: string) {
     for (var i = 0; i < this._size; i++) {
       if (this.collection[i]["id"] == id) {
-        this.collection.splice(i, 1);
+        if (this.collection[i]["quantity"] == 1) this.collection.splice(i, 1);
+        else this.collection[i]["quantity"] = this.collection[i]["quantity"] - 1;
+
         this._size--;
 
         return;
@@ -42,7 +44,9 @@ class ItemsCollection {
   remove(item: Item) {
     for (var i = 0; i < this._size; i++) {
       if (this.collection[i]["id"] == item["id"]) {
-        this.collection.splice(i, 1);
+        if (this.collection[i]["quantity"] == 1) this.collection.splice(i, 1);
+        else this.collection[i]["quantity"] = this.collection[i]["quantity"] - 1;
+
         this._size--;
         return;
       }

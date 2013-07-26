@@ -30,13 +30,14 @@ describe("Item.constructor()", function() {
 describe("ItemsCollection: size, add, remove, removeById, getNth", function() {
   var item0, item1, item2: Item;
   var items: ItemsCollection;
+  var date1, date2: Date;
 
   it("returns the size of the collection", function() {
     items = new ItemsCollection();
     expect(items.size()).toEqual(0);
 
-    item0 = new Item("foo", new Date(), 9000)
-    item1 = new Item("bar", new Date(), 666)
+    item0 = new Item("foo", date1, 1);
+    item1 = new Item("bar", date2, 1);
     items.add(item0);
     expect(items.size()).toEqual(1);
 
@@ -68,5 +69,29 @@ describe("ItemsCollection: size, add, remove, removeById, getNth", function() {
     item2 = null;
     item2 = items.get(item0["id"]);
     expect(item2.name).toEqual("foo");
+  });
+});
+
+describe("ItemsCollection: remove, removeById, size", function() {
+  var item: Item = new Item("foo", new Date(), 2);
+  var item1: Item = new Item("bar", new Date(), 10);
+  var items: ItemsCollection = new ItemsCollection();
+
+  it("decreases the quantity of the item", function () {
+    items.add(item);
+    expect(items.size()).toEqual(2);
+
+    items.remove(item);
+    expect(items.size()).toEqual(1);
+
+    items.add(item1);
+    expect(items.size()).toEqual(11);
+
+    items.remove(item);
+    expect(items.size()).toEqual(10);
+    expect(items.getNth(0).quantity).toEqual(10);
+
+    items.removeById(item1["id"]);
+    expect(items.size()).toEqual(9);
   });
 });
