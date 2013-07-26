@@ -9,34 +9,33 @@ $(document).ready(function () {
 
   $(".return").on("click", function () {
     window['viewport'].switchPanel();
+
+    return true;
   });
 
   function submitForm() {
     var item: Item;
     var title: string;
-    var date: string;
+    var date: number;
     var quantity: number;
 
     title = $("#title").val();
-    date  = String(new Date($("#date-picker").val()).getTime());
+    date  = new Date($("#date-picker").val()).getTime();
     quantity = parseInt($("#quantity").val());
 
     item = new Item(title, date, quantity);
     window["items"].add(item);
 
     resetForm();
-
-    return false;
   }
 
-  $("#submit-btn").on("click", function () { return submitForm(); });
-  $("#title").on("keypress", function (event) {
-    if (event.which == 13 && $(this).val() != "") return submitForm();
-  });
+  $("#submit-btn").on("click", function () { submitForm(); return true; });
 
   $("#title").on("keyup", function () {
     if($(this).val() != "") $("#submit-btn").removeAttr("disabled");
     else $("#submit-btn").attr("disabled", "disabled");
+
+    return true;
   });
 });
 

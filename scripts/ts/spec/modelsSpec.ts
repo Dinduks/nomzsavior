@@ -2,11 +2,11 @@
 /// <reference path="../src/models.ts" />
 
 describe("Item.constructor()", function() {
-  var date: Date;
+  var date: number;
   var item: Item;
 
   it("creates an object with the correct values", function() {
-    date = new Date();
+    date = (new Date()).getTime();
     item = new Item("foo", date, 9000)
 
     expect(item.name).toEqual("foo")
@@ -15,7 +15,7 @@ describe("Item.constructor()", function() {
   });
 
   it("sets quantity to one if not specified", function() {
-    date = new Date();
+    date = (new Date()).getTime();
     item = new Item("foo", date)
 
     expect(item.quantity).toEqual(1)
@@ -30,7 +30,7 @@ describe("Item.constructor()", function() {
 describe("ItemsCollection: size, add, remove, removeById, getNth", function() {
   var item0, item1, item2: Item;
   var items: ItemsCollection;
-  var date1, date2: Date;
+  var date1, date2: number;
 
   it("returns the size of the collection", function() {
     items = new ItemsCollection();
@@ -78,8 +78,8 @@ describe("ItemsCollection: remove, removeById, size", function() {
   it("decreases the quantity of the item", function () {
     localStorage.clear();
 
-    var item: Item = new Item("foo", new Date(), 2);
-    var item1: Item = new Item("bar", new Date(), 10);
+    var item: Item = new Item("foo", (new Date()).getTime(), 2);
+    var item1: Item = new Item("bar", (new Date()).getTime(), 10);
     var items: ItemsCollection = new ItemsCollection();
 
     items.add(item);
@@ -107,10 +107,10 @@ describe("ItemsCollection.sort()", function() {
   var items: ItemsCollection = new ItemsCollection();
 
   it("correctly sorts the items of the collection", function () {
-    item0 = new Item("0", new Date(2013, 0, 1));
-    item1 = new Item("1", new Date(2013, 1, 1));
-    item2 = new Item("2", new Date(2013, 2, 1));
-    item3 = new Item("3", new Date(2013, 3, 1));
+    item0 = new Item("0", (new Date(2013, 0, 1).getTime()));
+    item1 = new Item("1", (new Date(2013, 1, 1).getTime()));
+    item2 = new Item("2", (new Date(2013, 2, 1).getTime()));
+    item3 = new Item("3", (new Date(2013, 3, 1).getTime()));
 
     items.add(item1);
     items.add(item3);

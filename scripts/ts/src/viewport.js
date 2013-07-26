@@ -22,4 +22,9 @@ $(document).ready(function () {
     };
 
     window.viewport.init();
+
+    $("#title").on("keypress", function (event) {
+        if (event.keyCode == 13 && $(this).val() != "") submitForm();
+        return true;
+    });
 });

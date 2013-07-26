@@ -3,10 +3,10 @@
 class Item {
   id: string;
   name: string;
-  expirationDate: string;
+  expirationDate: number;
   quantity: number;
 
-  constructor(name: string, expirationDate: string, quantity?: number) {
+  constructor(name: string, expirationDate: number, quantity?: number) {
     this.id = String((new Date()).getTime() + Math.floor(Math.random() * 10000));
     this.name = name;
     this.expirationDate = expirationDate;
@@ -24,7 +24,7 @@ class Item {
     var now = new Date();
     var priority = 0;
     var oneDay: number = 24*60*60*1000; // hours*minutes*seconds*milliseconds
-    var diff = Math.round(Math.abs((parseInt(this.expirationDate) - now.getTime()) / oneDay));
+    var diff = Math.round(Math.abs((this.expirationDate - now.getTime()) / oneDay));
 
     if (diff <= 2) {
       priority = 3;
