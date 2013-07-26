@@ -13,16 +13,26 @@ body {
 }
 
 #screens-container {
+  position:absolute;
   height: 100%;
   width: 200%;
+  top:0;
+  left:0;
 }
 
-#main-screen {
-  float: left;
-  width: 50%;
+#screens-container div.screen {
+    position:absolute;
+    width:50%;
+    height:100%;
+    top:0;
+    left:0;
 }
 
-#add-form-screen {
-  float: left;
-  width: 50%;
+#screens-container div.screen.right {
+    background-color:red;
+    left:50%;
+}
+
+#screens-container div.screen.left {
+    background-color:blue;
 }
