@@ -1,11 +1,12 @@
 $(document).ready(function () {
-    function log(m) { console.log(m); }
+    var $$  = function (s) { return document.getElementById(s); }
+    var log = function (m) { console.log(m); }
 
     window.viewport = {
         init : function () {
-            this.container = $('screens-container');
-            this.left = $('main-screen');
-            this.right = $('add-form-screen');
+            this.container = $$('screens-container');
+            this.left = $$('main-screen');
+            this.right = $$('add-form-screen');
             this.flag = true;
 
             if (AppStorage.getCurrentScreen() == 2) {
