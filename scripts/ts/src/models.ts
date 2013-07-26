@@ -1,5 +1,3 @@
-/// <reference path="../src/appstorage.ts" />
-
 class Item {
   id: string;
   name: string;
@@ -44,8 +42,8 @@ class ItemsCollection {
   private name = "items";
 
   constructor() {
-    this.collection = AppStorage.get(this.name) || [];
-    this._size = AppStorage.get('size') || 0;
+    this.collection = appStorage.get(this.name) || [];
+    this._size = appStorage.get('size') || 0;
   }
 
   add(item: Item) {
@@ -65,8 +63,8 @@ class ItemsCollection {
   private append(item: Item) {
     this._size += item.quantity;
     this.collection.push(item);
-    AppStorage.save(this.name, this.collection);
-    AppStorage.save("size", this._size);
+    appStorage.save(this.name, this.collection);
+    appStorage.save("size", this._size);
   }
 
   removeById(id: string) {
@@ -80,8 +78,8 @@ class ItemsCollection {
       }
     }
 
-    AppStorage.save(name, this.collection);
-    AppStorage.save("size", this._size);
+    appStorage.save(name, this.collection);
+    appStorage.save("size", this._size);
   }
 
   remove(item: Item) {
@@ -95,8 +93,8 @@ class ItemsCollection {
       }
     }
 
-    AppStorage.save(this.name, this.collection);
-    AppStorage.save("size", this._size);
+    appStorage.save(this.name, this.collection);
+    appStorage.save("size", this._size);
   }
 
   size(): number {
@@ -148,7 +146,7 @@ class ItemsCache {
   items: { [name :string]: number; };
 
   constructor() {
-    this.items = AppStorage.get(this.storageName) || {};
+    this.items = appStorage.get(this.storageName) || {};
   }
 
   addItem(name: string, quantity: number) {
@@ -156,7 +154,7 @@ class ItemsCache {
       this.items[name] = 0;
     }
     this.items[name] += quantity
-    AppStorage.save(this.storageName, this.items);
+    appStorage.save(this.storageName, this.items);
     return this.items;
   }
 
@@ -182,6 +180,6 @@ class ItemsCache {
 
   clear(): void {
     this.items = {};
-    AppStorage.save(this.storageName, this.items);
+    appStorage.save(this.storageName, this.items);
   }
 }
