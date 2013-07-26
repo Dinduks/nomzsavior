@@ -1,6 +1,3 @@
-/// <reference path="../definitions/jasmine.d.ts" />
-/// <reference path="../src/appstorage.ts" />
-
 describe("getCurrentScreen()", function() {
   it("returns the current screen", function() {
     AppStorage.setCurrentScreen(42);
