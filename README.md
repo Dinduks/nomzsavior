@@ -12,8 +12,8 @@ Install it and run it: `brew install mongoose && mongoose -p 1337 &`
 ## Setup
 `npm install`
 
-## Compiling the TypeScript scripts (and enabling hot reloading)
-`grunt`
+## Compiling the TypeScript scripts
+`./build.sh`
 
 ## Run the tests
 `open run-specs.html`
