@@ -24,6 +24,19 @@ class ItemsCollection {
   }
 
   add(item: Item) {
+    var len = this.collection.length
+    for (var i=0; i<len; ++i) {
+      var current = this.collection[i];
+      if (current.name == item.name && current.expirationDate == item.expirationDate) {
+        current.quantity += item.quantity;
+        return;
+      }
+    }
+
+    this.append(item)
+  }
+
+  private append(item: Item) {
     this._size++;
     this.collection.push(item);
   }
