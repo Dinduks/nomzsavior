@@ -3,13 +3,14 @@
 window["viewport"] = {};
 
 $("#add-item-btn").on("click", function () {
-    window["viewport"].switchPanel();
+  window["viewport"].switchPanel()
+    .then(function () { $("#title").get(0).focus(); });
 
-    return true;
+  return true;
 });
 
 $(document).ready(function () {
-    var date = new Date();
-    date.setTime(date.getTime() + 60*60*24*1000);
-    $('#date-picker').val(date.toJSON().slice(0,10));
+  var date = new Date();
+  date.setTime(date.getTime() + 60*60*24*1000);
+  $('#date-picker').val(date.toJSON().slice(0,10));
 });

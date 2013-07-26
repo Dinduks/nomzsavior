@@ -16,8 +16,7 @@ $(document).ready(function () {
             var self = this;
             return Zanimo(this.container)
                     .then(Zanimo.transitionf('transform', 'translate3d(-' + self.getPosition() + 'px,0,0)', 200))
-                    .then(function () { self.flag = !self.flag; return self.getPosition();})
-                    .then(log, log);
+                    .then(function (el) { self.flag = !self.flag; return el;});
         }
     };
 
