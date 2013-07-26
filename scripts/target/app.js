@@ -233,7 +233,7 @@ $(document).ready(function () {
         window['viewport'].switchPanel();
     });
 
-    $("#submit-btn").on("click", function () {
+    function submitForm() {
         var item;
         var title;
         var date;
@@ -249,6 +249,14 @@ $(document).ready(function () {
         resetForm();
 
         return false;
+    }
+
+    $("#submit-btn").on("click", function () {
+        return submitForm();
+    });
+    $("#title").on("keypress", function (event) {
+        if (event.which == 13 && $(this).val() != "")
+            return submitForm();
     });
 
     $("#title").on("keyup", function () {
