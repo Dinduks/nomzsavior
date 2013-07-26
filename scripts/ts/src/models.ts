@@ -21,7 +21,9 @@ class Item {
   getPriority() {
     var now = new Date()
     var priority = 0;
-    var diff = this.expirationDate.getDate() - now.getDate()
+    var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
+    var diff = Math.round(Math.abs((this.expirationDate.getTime() - now.getTime())/(oneDay)));
+
     if (diff <= 2) {
       priority = 3;
     } else if (diff <= 7) {
