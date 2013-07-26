@@ -49,4 +49,5 @@ function resetForm() {
   $("#quantity").val("1");
   setDateToTomorrow();
   $("#title").get(0).focus();
+  $("#submit-btn").attr("disabled", "disabled");
 }
