@@ -34,8 +34,6 @@ class ItemsCollection {
         this.collection.splice(i, 1);
         this._size--;
 
-    console.log(this.collection[0])
-    console.log(this.collection[1])
         return;
       }
     }
