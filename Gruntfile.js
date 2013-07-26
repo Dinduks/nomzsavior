@@ -1,6 +1,22 @@
 module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
+        template: {
+            dev: {
+                src: 'tpl/index.underscore',
+                dest: 'index.html',
+                variables: {
+                    appCache: false
+                }
+            },
+            dist: {
+                src: 'tpl/index.underscore',
+                dest: 'index.html',
+                variables: {
+                    appCache: true
+                }
+            }
+        },
         watch: {
            options: {
                 forever: true,
@@ -8,14 +24,14 @@ module.exports = function(grunt) {
             },
             scripts: {
                 files: ['scripts/ts/src/**/*.ts'],
-                tasks: ['typescript'],
+                tasks: ['template', 'typescript'],
                 options: {}
             },
             styles: {
                 files: ['stylesheets/*.css']
             },
-            html: {
-                files: ['*.html']
+            html: {
+                files: ['*.html']
             }
         },
         typescript: {
@@ -29,9 +45,11 @@ module.exports = function(grunt) {
         }
     });
 
+    grunt.loadNpmTasks('grunt-templater');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-typescript');
 
     // Here we  go !
-    grunt.registerTask('default', ['typescript', 'watch']);
+    grunt.registerTask('default', ['template:dev', 'typescript', 'watch']);
+    grunt.registerTask('dist', ['']);
 };

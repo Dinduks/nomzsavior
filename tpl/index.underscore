@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" >
+<html lang="en" <%= appCache ? 'manifest="manifest.appcache"' : '' %>>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width"/>
@@ -10,7 +10,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-
     <div id="main-container">
         <div id="screens-container">
             <div id="main-screen" class="screen left">
