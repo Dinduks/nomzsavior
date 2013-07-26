@@ -6,6 +6,13 @@ module.exports = function(grunt) {
                 files: ['scripts/ts/src/**/*.ts'],
                 tasks: ['typescript'],
                 options: {}
+            },
+            styles: {
+                files: ['stylesheets/*.css'],
+                options: {
+                    forever: true,
+                    livereload: true
+                }
             }
         },
         typescript: {
