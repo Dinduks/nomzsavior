@@ -44,7 +44,7 @@ class ItemsCollection {
   private name = "items";
 
   constructor() {
-    this.collection = AppStorage.get(name) || [];
+    this.collection = AppStorage.get(this.name) || [];
     this._size = AppStorage.get('size') || 0;
   }
 
