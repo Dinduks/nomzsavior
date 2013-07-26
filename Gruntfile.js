@@ -2,17 +2,20 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         watch: {
+           options: {
+                forever: true,
+                livereload: true
+            },
             scripts: {
                 files: ['scripts/ts/src/**/*.ts'],
                 tasks: ['typescript'],
                 options: {}
             },
             styles: {
-                files: ['stylesheets/*.css'],
-                options: {
-                    forever: true,
-                    livereload: true
-                }
+                files: ['stylesheets/*.css']
+            },
+            html: {
+                files: ['*.html']
             }
         },
         typescript: {
