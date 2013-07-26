@@ -53,7 +53,7 @@ window.mainScreen = {
     },
     _item : function (item) {
         var mon = ["JANVIER", "FEVRIER", "MARS", "AVRIL", "MAI", "JUIN", "JUILLET", "AOUT", "SEPTEMBRE", "OCTOBRE", "NOVEMBRE", "DECEMBRE"];
-        var d = new Date(item.expirationDate);
+        var d = new Date(parseInt(item.expirationDate, 10));
         var li = document.createElement('li'),
             div0 =  document.createElement('div'),
             div1 =  document.createElement('div'),
