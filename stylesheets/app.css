@@ -1,14 +1,12 @@
 body {
-  background-color: #343434;
   height: 100%;
   width: 100%;
   font-family: 'TitilliumRegular', sans-serif;
 }
 
-.hidden { display: none !important; }
-
-/* Items */
+/* -- Items -- */
 .item-list li {
+  list-style: none;
   position: relative;
   height: 100px;
   width: 100%;
@@ -30,11 +28,22 @@ body {
 /* Number of items */
 .item-list .case-item {
   width: 100px;
-  height: 100%;
+  height: 100px;
   font-size: 48px;
-  line-height: 100px;
+  line-height: 32px;
+  /*line-height: 100px;*/
   color: #fff;
   text-align: center;
+}
+
+.item-list .case-item .parent {
+  display: block;
+  padding-top: 18px;
+}
+
+.item-list .case-item .month {
+  text-transform: uppercase;
+  font-size: 20px;
 }
 
 /* Title of product */
@@ -43,6 +52,12 @@ body {
   line-height: 98px;
   color: #fff;
   padding-left: 30px;
+}
+
+.item-list .item span {
+  font-size: 24px;
+  color: #e5e5e5;
+  line-height: 2px;
 }
 
 /* Delete shortcut */
@@ -80,8 +95,25 @@ body {
 .item-list .green { background-color: #72b970; }
 .item-list .green .case-item { background-color: #599a57; }
 
+/* -- Add screen -- */
+.add-field input {
+  background-color: #f5f5f5;
+  width: 100%;
+  height: 100px;
+  font-family: 'TitilliumRegular', sans-serif;
+  margin: 0;
+  padding: 0 0 0 40px;
+  border: 0;
+  outline: 0;
+  color: #343434;
+  font-size: 32px;
 
-
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+      -ms-box-sizing: border-box;
+       -o-box-sizing: border-box;
+          box-sizing: border-box;
+}
 
 
 
@@ -114,11 +146,11 @@ body {
     left:0;
 }
 
-#screens-container div.screen.right {
-    background-color:red;
-    left:50%;
+#screens-container div.screen.left {
+    background-color: #343434;
 }
 
-#screens-container div.screen.left {
-    /*background-color:blue;*/
+#screens-container div.screen.right {
+    background-color: #343434;
+    left: 50%;
 }
