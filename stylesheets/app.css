@@ -181,3 +181,9 @@ body {
     background-color: #343434;
     left: 50%;
 }
+
+#bottom-btns {
+  position: absolute;
+  bottom: 0;
+  height: 121px;
+}
