@@ -117,7 +117,13 @@ body {
 .top-fields input[type="text"] { width: 80%; }
 .top-fields input[type="number"] { width: 18%; }
 
-.confirm button {
+#bottom-btns {
+  position: absolute;
+  bottom: 0;
+  height: 59px;
+}
+
+#submit-btn {
   background-color: #72b970;
   text-transform: uppercase;
   font: 21px/21px 'TitilliumRegular', sans-serif;
@@ -125,26 +131,34 @@ body {
   text-shadow: 0 1px 2px rgba(0, 0, 0, .2);
   border: none;
   display: block;
-  width: 100%;
+  width: calc(50% - 1px);
+  width: -moz-calc(50% - 1px);
+  width: -webkit-calc(50% - 1px);
   height: 60px;
   margin-bottom: 2px;
   font-weight: bold;
+  float: left;
 }
-.confirm button:disabled { background-color: #e6e6e6; }
+#submit-btn:disabled { background-color: #e6e6e6; }
 
-.confirm .return {
-  background-color: #b3b3b3;
+#return {
+  background-color: #f2905c;
   text-transform: uppercase;
   font: 21px/21px 'TitilliumRegular', sans-serif;
   color: #fff;
   text-shadow: 0 1px 2px rgba(0, 0, 0, .2);
   border: none;
   display: block;
-  width: 100%;
+  width: calc(50% - 3px);
+  width: -moz-calc(50% - 3px);
+  width: -webkit-calc(50% - 3px);
+  margin-left: 1px;
+  margin-right: 2px;
   height: 60px;
   margin-bottom: 2px;
   font-weight: bold;
   cursor: pointer;
+  float: left;
 }
 
 
@@ -180,10 +194,4 @@ body {
 #screens-container div.screen.right {
     background-color: #343434;
     left: 50%;
-}
-
-#bottom-btns {
-  position: absolute;
-  bottom: 0;
-  height: 121px;
 }

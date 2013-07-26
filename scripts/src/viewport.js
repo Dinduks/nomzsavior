@@ -27,7 +27,7 @@ $(document).ready(function () {
 
     window.viewport.init();
 
-    $(".return").on("click", function () {
+    $("#return").on("click", function () {
         window.viewport.switchPanel();
     });
 
