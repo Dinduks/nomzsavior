@@ -126,6 +126,9 @@ body {
   height: 50px;
 }
 
+.confirm input[type="submit"]:disabled {
+  background-color: #e6e6e6;
+}
 
 
 

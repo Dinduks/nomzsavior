@@ -31,6 +31,11 @@ $(document).ready(function () {
 
     return false;
   });
+
+  $("#title").on("keyup", function () {
+    if($(this).val() != "") $("#submit-btn").removeAttr("disabled");
+    else $("#submit-btn").attr("disabled", "disabled");
+  });
 });
 
 function setDateToTomorrow() {
