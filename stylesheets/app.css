@@ -116,7 +116,6 @@ body {
 
 .top-fields input[type="text"] { width: 80%; }
 .top-fields input[type="number"] { width: 18%; }
-.top-fields input[type="date"] { width: 100%; }
 
 .confirm button {
   background-color: #72b970;
