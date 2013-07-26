@@ -36,6 +36,8 @@ var ItemsCollection = (function () {
         this.name = "items";
         this.collection = appStorage.get(this.name) || [];
         this._size = appStorage.get('size') || 0;
+
+        this.sort();
     }
 
     ItemsCollection.prototype.add = function (item) {
@@ -50,6 +52,7 @@ var ItemsCollection = (function () {
         }
 
         this.append(item);
+        this.sort();
     };
 
     ItemsCollection.prototype.append = function (item) {
