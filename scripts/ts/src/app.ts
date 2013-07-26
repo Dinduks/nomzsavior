@@ -5,4 +5,6 @@
 $(document).ready(function () {
   AppStorage.checkForLocalStorage();
   window["mainScreen"].init();
+  //setCurrentScreenIfNeeded();
+  window['mainScreen'].render();
 });

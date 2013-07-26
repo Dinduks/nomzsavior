@@ -45,23 +45,28 @@ window.mainScreen = {
                 $(evt.target).parents().each(function (i, el) {
                     if(el.tagName == "LI") {
                         $(el).remove();
+                        items.removeById(el.id);
                     }
                 });
             }
         }
     },
     _item : function (item) {
+        var mon = ["JANVIER", "FEVRIER", "MARS", "AVRIL", "MAI", "JUIN", "JUILLET", "AOUT", "SEPTEMBRE", "OCTOBRE", "NOVEMBRE", "DECEMBRE"];
+        var d = new Date(item.expirationDate);
         var li = document.createElement('li'),
             div0 =  document.createElement('div'),
             div1 =  document.createElement('div'),
             div2 = document.createElement('div'),
             div3 = document.createElement('div');
 
-        div0.className = "red inner";
+        li.id = item.id;
+
+        div0.className = "inner red";
         div1.className = "case-item";
-        div1.innerHTML = "<span class='parent'>27<br><span class='month'>Juillet</span></span>";
+        div1.innerHTML = "<span class='parent'>"+ d.getDate() +"<br><span class='month'>" + mon[d.getMonth()] + "</span></span>";
         div2.className = "item";
-        div2.innerHTML = "du thon <span>4</span>";
+        div2.innerHTML = item.name + " <span>"+ item.quantity +"</span>";
         div3.innerHTML = "<img src='images/icon-delete.jpg' class='delete-icon' alt='Supprimer un élément'>";
         div3.className = "delete";
 
@@ -72,11 +77,9 @@ window.mainScreen = {
 
         return li;
     },
-    render : function (model) {
-        var a = new ItemsCollection();
-        a.add(new Item('toto', new Date(), 10));
-
-        var ul = document.querySelector('.item-list ul');
+    render : function () {
+        var self = this,
+            ul = document.querySelector('.item-list ul');
             li = document.createElement('li'),
             div1 =  document.createElement('div'),
             img = new Image(),
@@ -96,19 +99,8 @@ window.mainScreen = {
         ul.innerHTML = "";
         ul.appendChild(li);
 
-        ul.appendChild(this._item());
-        ul.appendChild(this._item());
-        ul.appendChild(this._item());
-        ul.appendChild(this._item());
-        ul.appendChild(this._item());
-        ul.appendChild(this._item());
-        ul.appendChild(this._item());
-        ul.appendChild(this._item());
-        ul.appendChild(this._item());
-        ul.appendChild(this._item());
-        ul.appendChild(this._item());
-        ul.appendChild(this._item());
-        ul.appendChild(this._item());
-        ul.appendChild(this._item());
+        items.collection.forEach(function (item) {
+            ul.appendChild(self._item(item));
+        });
     }
 };
