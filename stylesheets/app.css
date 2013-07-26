@@ -66,6 +66,7 @@ body {
 .item-list .add .case-item { background-color: #ebebeb; }
 .item-list .add .case-item img { padding-top: 16px; }
 .item-list .add .item { color: #333333; text-shadow: none; }
+#add-item-btn { cursor: pointer; }
 
 /* Red item */
 .item-list .red { background-color: #f26e6e; }

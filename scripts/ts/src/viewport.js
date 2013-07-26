@@ -1,7 +1,5 @@
 $(document).ready(function () {
-
     function log(m) { console.log(m); }
-    function $(s) { return document.getElementById(s); }
 
     window.viewport = {
         init : function () {
@@ -9,6 +7,10 @@ $(document).ready(function () {
             this.left = $('main-screen');
             this.right = $('add-form-screen');
             this.flag = true;
+
+            if (AppStorage.getCurrentScreen() == 2) {
+                $("#main-container").css({ left:  "-100%" });
+            }
         },
         getPosition : function () {
             return this.flag ? window.innerWidth : 0;
