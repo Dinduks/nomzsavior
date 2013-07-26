@@ -8,10 +8,6 @@ $(document).ready(function () {
             this.left = $$('main-screen');
             this.right = $$('add-form-screen');
             this.flag = true;
-
-            if (AppStorage.getCurrentScreen() == 2) {
-                $("#main-container").css({ left:  "-100%" });
-            }
         },
         getPosition : function () {
             return this.flag ? window.innerWidth : 0;
