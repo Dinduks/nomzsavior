@@ -91,6 +91,26 @@ class ItemsCollection {
 
     return null;
   }
+
+  sort(): ItemsCollection {
+    var weGood: bool;
+    var tmp: Item;
+
+    while (!weGood) {
+      weGood = true;
+      for (var i = 0; i < this.collection.length - 1; i++) {
+        if (this.collection[i].expirationDate.getTime() >
+            this.collection[i+1].expirationDate.getTime()) {
+          weGood = false;
+          tmp = this.collection[i];
+          this.collection[i] = this.collection[i+1];
+          this.collection[i+1] = tmp;
+        }
+      };
+    }
+
+    return this;
+  }
 }
 
 class ItemsCache {

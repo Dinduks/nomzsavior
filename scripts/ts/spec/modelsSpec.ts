@@ -96,4 +96,30 @@ describe("ItemsCollection: remove, removeById, size", function() {
     items.removeById(item1["id"]);
     expect(items.size()).toEqual(9);
   });
+
+  describe("ItemsCollection.sort()", function() {
+    localStorage.clear();
+
+    var item0, item1, item2, item3, item4: Item;
+    var items: ItemsCollection = new ItemsCollection();
+
+    it("correctly sorts the items of the collection", function () {
+      item0 = new Item("0", new Date(2013, 0, 1));
+      item1 = new Item("1", new Date(2013, 1, 1));
+      item2 = new Item("2", new Date(2013, 2, 1));
+      item3 = new Item("3", new Date(2013, 3, 1));
+
+      items.add(item1);
+      items.add(item3);
+      items.add(item2);
+      items.add(item0);
+
+      items.sort();
+
+      expect(items.getNth(0).name).toEqual("0");
+      expect(items.getNth(1).name).toEqual("1");
+      expect(items.getNth(2).name).toEqual("2");
+      expect(items.getNth(3).name).toEqual("3");
+    });
+  });
 });
