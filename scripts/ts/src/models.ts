@@ -136,10 +136,11 @@ class ItemsCollection {
 /* The ItemsCache stores all the items from the start.
    The ItemsCache is used to offer suggestions when adding a new item. */
 class ItemsCache {
+  private storageName = "itemsCache";
   items: { [name :string]: number; };
 
   constructor() {
-    this.items = {};
+    this.items = AppStorage.get(this.storageName) || {};
   }
 
   addItem(name: string, quantity: number) {
@@ -147,6 +148,7 @@ class ItemsCache {
       this.items[name] = 0;
     }
     this.items[name] += quantity
+    AppStorage.save(this.storageName, this.items);
     return this.items;
   }
 
@@ -172,5 +174,6 @@ class ItemsCache {
 
   clear(): void {
     this.items = {};
+    AppStorage.save(this.storageName, this.items);
   }
 }
