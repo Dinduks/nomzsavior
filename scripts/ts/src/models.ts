@@ -65,7 +65,7 @@ class ItemsCollection {
   private append(item: Item) {
     this._size += item.quantity;
     this.collection.push(item);
-    AppStorage.save(name, this.collection);
+    AppStorage.save(this.name, this.collection);
     AppStorage.save("size", this._size);
   }
 
@@ -87,7 +87,7 @@ class ItemsCollection {
         return;
       }
     }
-    AppStorage.save(name, this.collection);
+    AppStorage.save(this.name, this.collection);
     AppStorage.save("size", this._size);
   }
 
