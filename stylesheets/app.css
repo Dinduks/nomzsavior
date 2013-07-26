@@ -8,7 +8,7 @@ body {
 .item-list li {
   list-style: none;
   position: relative;
-  height: 100px;
+  height: 50px;
   width: 100%;
   margin-bottom: 1px;
 }
@@ -27,36 +27,36 @@ body {
 
 /* Number of items */
 .item-list .case-item {
-  width: 100px;
-  height: 100px;
-  font-size: 48px;
-  line-height: 32px;
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  line-height: 16px;
   color: #fff;
   text-align: center;
 }
 
 .item-list .case-item .parent {
   display: block;
-  padding-top: 18px;
+  padding-top: 9px;
 }
 
 .item-list .case-item .month {
   text-transform: uppercase;
-  font-size: 20px;
+  font-size: 10px;
 }
 
 /* Title of product */
 .item-list .item {
-  font-size: 32px;
-  line-height: 98px;
+  font-size: 16px;
+  line-height: 49px;
   color: #fff;
-  padding-left: 30px;
+  padding-left: 15px;
 }
 
 .item-list .item span {
-  font-size: 24px;
+  font-size: 12px;
+  line-height: 12px;
   color: #e5e5e5;
-  line-height: 2px;
 }
 
 /* Delete shortcut */
@@ -66,19 +66,19 @@ body {
   top: 0;
   right: 0;
   z-index: 10;
-  width: 84px;
+  width: 42px;
   height: 100%;
 }
 .item-list .delete img {
   margin: auto;
-  padding-top: 28px;
+  padding-top: 14px;
   display: block;
 }
 
 /* Add item */
 .item-list .add { background-color: #f5f5f5; }
 .item-list .add .case-item { background-color: #ebebeb; }
-.item-list .add .case-item img { padding-top: 16px; }
+.item-list .add .case-item img { padding-top: 8px; }
 .item-list .add .item { color: #333333; text-shadow: none; }
 #add-item-btn { cursor: pointer; }
 
@@ -98,14 +98,14 @@ body {
 .add-field input {
   background-color: #f5f5f5;
   width: 100%;
-  height: 100px;
+  height: 50px;
   font-family: 'TitilliumRegular', sans-serif;
   margin: 0;
-  padding: 0 0 0 40px;
+  padding: 0 0 0 20px;
   border: 0;
   outline: 0;
   color: #343434;
-  font-size: 32px;
+  font-size: 16px;
 
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
@@ -117,13 +117,13 @@ body {
 .confirm input[type="submit"] {
   background-color: #72b970;
   text-transform: uppercase;
-  font: 42px/42px 'TitilliumRegular', sans-serif;
+  font: 21px/21px 'TitilliumRegular', sans-serif;
   color: #fff;
   text-shadow: 1px 2px rgba(0, 0, 0, .2);
   border: none;
   display: block;
   width: 100%;
-  height: 100px;
+  height: 50px;
 }
 
 
