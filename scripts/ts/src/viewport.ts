@@ -7,3 +7,9 @@ $("#add-item-btn").on("click", function () {
 
     return true;
 });
+
+$(document).ready(function () {
+    var date = new Date();
+    date.setTime(date.getTime() + 60*60*24*1000);
+    $('#date-picker').val(date.toJSON().slice(0,10));
+});
