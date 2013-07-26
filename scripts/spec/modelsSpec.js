@@ -1,24 +1,21 @@
-/// <reference path="../definitions/jasmine.d.ts" />
-/// <reference path="../src/models.ts" />
-
 describe("Item.constructor()", function() {
-  var date: number;
-  var item: Item;
+  var date;
+  var item;
 
   it("creates an object with the correct values", function() {
     date = (new Date()).getTime();
-    item = new Item("foo", date, 9000)
+    item = new Item("foo", date, 9000);
 
-    expect(item.name).toEqual("foo")
+    expect(item.name).toEqual("foo");
     expect(item.expirationDate).toEqual(date);
-    expect(item.quantity).toEqual(9000)
+    expect(item.quantity).toEqual(9000);
   });
 
   it("sets quantity to one if not specified", function() {
     date = (new Date()).getTime();
-    item = new Item("foo", date)
+    item = new Item("foo", date);
 
-    expect(item.quantity).toEqual(1)
+    expect(item.quantity).toEqual(1);
   });
 
   it("throws an exception if not logical quantity is specified", function() {
@@ -28,9 +25,9 @@ describe("Item.constructor()", function() {
 });
 
 describe("ItemsCollection: size, add, remove, removeById, getNth", function() {
-  var item0, item1, item2: Item;
-  var items: ItemsCollection;
-  var date1, date2: number;
+  var item0, item1, item2;
+  var items;
+  var date1, date2;
 
   it("returns the size of the collection", function() {
     items = new ItemsCollection();
@@ -43,7 +40,6 @@ describe("ItemsCollection: size, add, remove, removeById, getNth", function() {
     expect(items.size()).toEqual(1);
 
     items.add(item1);
-    console.log(items.size());
     expect(items.size()).toEqual(2);
 
     item2 = items.getNth(0);
@@ -63,13 +59,13 @@ describe("ItemsCollection: size, add, remove, removeById, getNth", function() {
     items.add(item1);
     expect(items.size()).toEqual(2);
 
-    items.removeById(item1["id"]);
+    items.removeById(item1.id);
     item2 = items.getNth(0);
     expect(item2.name).toEqual("foo");
     expect(items.size()).toEqual(1);
 
     item2 = null;
-    item2 = items.get(item0["id"]);
+    item2 = items.get(item0.id);
     expect(item2.name).toEqual("foo");
   });
 });
@@ -78,9 +74,9 @@ describe("ItemsCollection: remove, removeById, size", function() {
   it("decreases the quantity of the item", function () {
     localStorage.clear();
 
-    var item: Item = new Item("foo", (new Date()).getTime(), 2);
-    var item1: Item = new Item("bar", (new Date()).getTime(), 10);
-    var items: ItemsCollection = new ItemsCollection();
+    var item = new Item("foo", (new Date()).getTime(), 2);
+    var item1 = new Item("bar", (new Date()).getTime(), 10);
+    var items = new ItemsCollection();
 
     items.add(item);
     expect(items.size()).toEqual(2);
@@ -95,7 +91,7 @@ describe("ItemsCollection: remove, removeById, size", function() {
     expect(items.size()).toEqual(10);
     expect(items.getNth(0).quantity).toEqual(10);
 
-    items.removeById(item1["id"]);
+    items.removeById(item1.id);
     expect(items.size()).toEqual(9);
   });
 });
@@ -103,8 +99,8 @@ describe("ItemsCollection: remove, removeById, size", function() {
 describe("ItemsCollection.sort()", function() {
   localStorage.clear();
 
-  var item0, item1, item2, item3, item4: Item;
-  var items: ItemsCollection = new ItemsCollection();
+  var item0, item1, item2, item3, item4;
+  var items = new ItemsCollection();
 
   it("correctly sorts the items of the collection", function () {
     item0 = new Item("0", (new Date(2013, 0, 1).getTime()));
@@ -127,7 +123,7 @@ describe("ItemsCollection.sort()", function() {
 });
 
 describe("ItemsCache", function() {
-  var cache: ItemsCache;
+  var cache;
   cache = new ItemsCache();
   cache.addItem("lemon", 2);
   cache.addItem("tomato", 3);
@@ -159,7 +155,7 @@ describe("ItemsCache", function() {
 });
 
 describe("ItemsCache", function() {
-  var cache: ItemsCache;
+  var cache;
   cache = new ItemsCache();
   cache.addItem("lemon", 2);
   cache.addItem("tomato", 3);
