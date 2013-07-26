@@ -15,6 +15,7 @@ class Item {
   }
 }
 
+/* Items that the user currently owns */
 class ItemsCollection {
   private collection: Item[];
   private _size: number = 0;
@@ -82,6 +83,10 @@ class ItemsCollection {
   }
 }
 
+
+
+/* The ItemsCache stores all the items from the start.
+   The ItemsCache is used to offer suggestions when adding a new item. */
 class ItemsCache {
   items: { [name :string]: number; };
 
@@ -89,12 +94,32 @@ class ItemsCache {
     this.items = {};
   }
 
-  addItem(name: string, quantity?: number): { [name :string]: number; } {
-    return null;
+  addItem(name: string, quantity: number) {
+    if (this.items[name] == undefined) {
+      this.items[name] = 0;
+    }
+    this.items[name] += quantity
+    return this.items;
   }
 
-  getMostPopularItems(numberOfItems?: number): { [name :string]: number; }[] {
-    return null;
+  getMostPopularItemsByName(name: string, numberOfItems?: number) {
+    var popularItems = this.getMostPopularItems(numberOfItems);
+    var regexp = new RegExp(name,"g");
+    return popularItems.filter( (item) => item.name.match(regexp) != null);
+  }
+
+  getMostPopularItems(numberOfItems?: number): { name :string; quantity: number; }[] {
+    var popularItems = []
+    for (var name in this.items) {
+      var quantity = this.items[name]
+      popularItems.push({name: name, quantity: quantity})
+    }
+
+    if (numberOfItems == undefined) {
+      numberOfItems = popularItems.length;
+    }
+
+    return popularItems.sort( (a, b) => b.quantity - a.quantity).slice(0, numberOfItems)
   }
 
   clear(): void {

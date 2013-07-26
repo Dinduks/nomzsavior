@@ -91,3 +91,35 @@ describe("ItemsCollection.add", function() {
     expect(items.getNth(0).quantity).toEqual(10);
   });
 });
+
+describe("ItemsCache", function() {
+  var cache: ItemsCache;
+  cache = new ItemsCache();
+  cache.addItem("lemon", 2);
+  cache.addItem("tomato", 3);
+  cache.addItem("orange", 10);
+  cache.addItem("lemon", 1);
+
+  it("getMostPopularItems", function () {
+    var popularItems = cache.getMostPopularItems();
+    var limit = popularItems.length - 1;
+    for (var i=0; i <limit; ++i) {
+      expect(popularItems.length).toEqual(3);
+      expect(popularItems[i].quantity >= popularItems[i+1].quantity).toEqual(true);
+    }
+  });
+
+  it("getMostPopularItems with a limit of numberOfItems", function () {
+    var popularItems = cache.getMostPopularItems(2);
+    var limit = popularItems.length - 1;
+    for (var i=0; i <limit; ++i) {
+      expect(popularItems.length).toEqual(2);
+      expect(popularItems[i].quantity >= popularItems[i+1].quantity).toEqual(true);
+    }
+  });
+
+  it("getMostPopularItems filtered by name", function () {
+    var popularItems = cache.getMostPopularItemsByName("m");
+    expect(popularItems.length).toEqual(2);
+  });
+});
