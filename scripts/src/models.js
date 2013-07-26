@@ -45,7 +45,7 @@ var ItemsCollection = (function () {
                 current.quantity += item.quantity;
                 this._size += item.quantity;
 
-                return;
+                break;
             }
         }
 
@@ -67,11 +67,11 @@ var ItemsCollection = (function () {
 
                 this._size--;
 
-                return;
+                break;
             }
         }
 
-        appStorage.save(name, this.collection);
+        appStorage.save(this.name, this.collection);
         appStorage.save("size", this._size);
     };
 
