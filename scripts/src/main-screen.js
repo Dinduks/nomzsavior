@@ -1,4 +1,5 @@
-var $$  = function (s) { return document.getElementById(s); }
+var $$  = function (s) { return document.getElementById(s); };
+
 window.mainScreen = {
     init : function () {
         this.screen = $$('main-screen');
@@ -105,7 +106,7 @@ window.mainScreen = {
         });
 
         $("#add-item-btn").on("click", function () {
-            window["viewport"].switchPanel().then(function () { $("#title").get(0).focus(); });
+            window.viewport.switchPanel().then(function () { $("#title").get(0).focus(); });
             return false;
       });
     }
