@@ -64,7 +64,7 @@ window.mainScreen = {
         date.setHours(0, 0, 0, 0);
 
         if (daysDifferenceBetweenDates(today, date) === 0) {
-            return ["Today", ""];
+            return ["Today", "0 day"];
         } else if (daysDifferenceBetweenDates(date, today) >= 2 &&
                    daysDifferenceBetweenDates(date, today) < 7) {
             var days = (date.getTime() - today.getTime()) / (millisecondsInADay);
@@ -72,9 +72,10 @@ window.mainScreen = {
         } else if (daysDifferenceBetweenDates(date, today) >= 7) {
             return ["+ 1", "week"];
         } else if (daysDifferenceBetweenDates(date, today) >= 1) {
-            return ["Tmrw", ""];
+            return ["Tmrw", "1 day"];
         } else {
-            return ["Expird", ""];
+            var diff = daysDifferenceBetweenDates(date, today);
+            return ["Expird", diff + " day" + ((diff === -1) ? "" : "s")];
         }
 
         throw "Couldn't process the specified date";
