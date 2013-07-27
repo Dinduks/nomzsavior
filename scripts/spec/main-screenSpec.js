@@ -11,7 +11,7 @@ describe("window.mainScreen._getExpirationInfo()", function () {
     it("returns 'Tomorrow' when it's the case", function () {
         var date = new Date();
         addDaysToDate(date, 1);
-        expect(getExpirationInfo(date)).toEqual(["Tomorrow", ""]);
+        expect(getExpirationInfo(date)).toEqual(["Tmrw", ""]);
     });
 
     it("returns the numbers of days left when >= 2 and < 7", function () {
@@ -39,6 +39,6 @@ describe("window.mainScreen._getExpirationInfo()", function () {
     it("returns 'Expired' when it's the case", function () {
         var date = new Date();
         addDaysToDate(date, -6);
-        expect(getExpirationInfo(date)).toEqual(["Expired", ""]);
+        expect(getExpirationInfo(date)).toEqual(["Expird", ""]);
     });
 });

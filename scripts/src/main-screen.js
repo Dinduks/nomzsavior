@@ -72,16 +72,16 @@ window.mainScreen = {
         } else if (daysDifferenceBetweenDates(date, today) >= 7) {
             return ["+ 1", "week"];
         } else if (daysDifferenceBetweenDates(date, today) >= 1) {
-            return ["Tomorrow", ""];
+            return ["Tmrw", ""];
         } else {
-            return ["Expired", ""];
+            return ["Expird", ""];
         }
 
         throw "Couldn't process the specified date";
     },
     _item : function (item) {
-        var mon = ["JANVIER", "FEVRIER", "MARS", "AVRIL", "MAI", "JUIN", "JUILLET", "AOUT", "SEPTEMBRE", "OCTOBRE", "NOVEMBRE", "DECEMBRE"];
         var d = new Date(parseInt(item.expirationDate, 10));
+        var expirationText = window.mainScreen._getExpirationInfo(d);
         var li = document.createElement('li'),
             div0 =  document.createElement('div'),
             div1 =  document.createElement('div'),
@@ -92,7 +92,7 @@ window.mainScreen = {
 
         div0.className = "inner red";
         div1.className = "case-item";
-        div1.innerHTML = "<span class='parent'>"+ d.getDate() +"<br><span class='month'>" + mon[d.getMonth()] + "</span></span>";
+        div1.innerHTML = "<span class='parent'>"+ expirationText[0] +"<br><span class='month'>" + expirationText[1] + "</span></span>";
         div2.className = "item";
         div2.innerHTML = item.name + " <span>"+ item.quantity +"</span>";
         div3.innerHTML = "<img src='images/icon-delete.jpg' class='delete-icon' alt='Supprimer un élément'>";
