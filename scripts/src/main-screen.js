@@ -64,18 +64,18 @@ window.mainScreen = {
         date.setHours(0, 0, 0, 0);
 
         if (daysDifferenceBetweenDates(today, date) === 0) {
-            return ["Today", "0 day"];
+            return ["0", "day"];
         } else if (daysDifferenceBetweenDates(date, today) >= 2 &&
                    daysDifferenceBetweenDates(date, today) < 7) {
             var days = (date.getTime() - today.getTime()) / (millisecondsInADay);
-            return ["+ " + days, "days"];
+            return [days, "days"];
         } else if (daysDifferenceBetweenDates(date, today) >= 7) {
             return ["+ 1", "week"];
         } else if (daysDifferenceBetweenDates(date, today) >= 1) {
-            return ["Tmrw", "1 day"];
+            return ["1", "day"];
         } else {
             var diff = daysDifferenceBetweenDates(date, today);
-            return ["Expird", diff + " day" + ((diff === -1) ? "" : "s")];
+            return [diff, "day" + ((diff === -1) ? "" : "s")];
         }
 
         throw "Couldn't process the specified date";
