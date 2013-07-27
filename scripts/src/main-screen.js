@@ -52,6 +52,31 @@ window.mainScreen = {
             }
         }
     },
+    _getExpirationInfo: function (date) {
+        var daysDifferenceBetweenDates = function (date1, date2) {
+            return (date1.getTime() - date2.getTime()) / millisecondsInADay;
+        };
+
+        var today = new Date();
+        var millisecondsInADay = 60 * 60 * 24 * 1000;
+
+        today.setHours(0, 0, 0, 0);
+        date.setHours(0, 0, 0, 0);
+
+        if (daysDifferenceBetweenDates(today, date) === 0) {
+            return ["Today", ""];
+        } else if (daysDifferenceBetweenDates(date, today) >= 2 &&
+                   daysDifferenceBetweenDates(date, today) < 7) {
+            var days = (date.getTime() - today.getTime()) / (millisecondsInADay);
+            return ["+ " + days, "days"];
+        } else if (daysDifferenceBetweenDates(date, today) >= 7) {
+            return ["+ 1", "week"];
+        } else if (daysDifferenceBetweenDates(date, today) >= 1) {
+            return ["Tomorrow", ""];
+        }
+
+        throw "Couldn't process the specified date";
+    },
     _item : function (item) {
         var mon = ["JANVIER", "FEVRIER", "MARS", "AVRIL", "MAI", "JUIN", "JUILLET", "AOUT", "SEPTEMBRE", "OCTOBRE", "NOVEMBRE", "DECEMBRE"];
         var d = new Date(parseInt(item.expirationDate, 10));
