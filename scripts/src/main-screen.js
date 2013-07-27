@@ -73,6 +73,8 @@ window.mainScreen = {
             return ["+ 1", "week"];
         } else if (daysDifferenceBetweenDates(date, today) >= 1) {
             return ["Tomorrow", ""];
+        } else {
+            return ["Expired", ""];
         }
 
         throw "Couldn't process the specified date";

@@ -35,4 +35,10 @@ describe("window.mainScreen._getExpirationInfo()", function () {
         addDaysToDate(date, 42);
         expect(getExpirationInfo(date)).toEqual(["+ 1", "week"]);
     });
+
+    it("returns 'Expired' when it's the case", function () {
+        var date = new Date();
+        addDaysToDate(date, -6);
+        expect(getExpirationInfo(date)).toEqual(["Expired", ""]);
+    });
 });
