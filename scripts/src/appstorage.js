@@ -22,6 +22,7 @@ app.models.AppStorage = {
         localStorage.setItem(id, JSON.stringify(items));
     },
     get: function (id) {
-        return JSON.parse(localStorage.getItem(id));
+        var result = localStorage.getItem(id);
+        return (result) ? JSON.parse(result) : "";
     }
 };

@@ -97,12 +97,12 @@ describe("ItemsCollection: remove, removeById, size", function() {
 });
 
 describe("ItemsCollection.sort()", function() {
-  localStorage.clear();
-
   var item0, item1, item2, item3, item4;
   var items = new ItemsCollection();
 
   it("correctly sorts the items of the collection", function () {
+    localStorage.clear();
+
     item0 = new Item("0", (new Date(2013, 0, 1).getTime()));
     item1 = new Item("1", (new Date(2013, 1, 1).getTime()));
     item2 = new Item("2", (new Date(2013, 2, 1).getTime()));
