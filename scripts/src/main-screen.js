@@ -1,7 +1,7 @@
 var $$  = function (s) { return document.getElementById(s); };
 
 window.mainScreen = {
-    init : function () {
+    init: function () {
         this.screen = $$('main-screen');
         var touched = false,
             x = 0,
@@ -140,7 +140,7 @@ window.mainScreen = {
 
         throw "Couldn't process the specified date";
     },
-    _item : function (item) {
+    _renderItem: function (item) {
         var d = new Date(parseInt(item.expirationDate, 10));
         var expirationText = window.mainScreen._getExpirationInfo(d);
         var li = document.createElement('li'),
@@ -180,8 +180,7 @@ window.mainScreen = {
 
         return li;
     },
-    render : function () {
-
+    render: function () {
         var self = this,
             ul = document.querySelector('.item-list ul');
             li = document.createElement('li'),
@@ -204,7 +203,7 @@ window.mainScreen = {
         ul.appendChild(li);
 
         items.collection.forEach(function (item) {
-            ul.appendChild(self._item(item));
+            ul.appendChild(self._renderItem(item));
         });
 
         $("#add-item-btn").on("click", function () {
