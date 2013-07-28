@@ -39,6 +39,14 @@ $(document).ready(function () {
     $("#return").on("click", function () { window.viewport.switchPanel(); });
     $("#submit-btn").on("click", function () { submitForm(); return true; });
 
+    $("#quantity").on("focus", function () {
+        var $el = $(this);
+        var value = $el.val();
+        if (!value) {
+            $el.val(1);
+        }
+    });
+
     enableAddBtnToggling();
 });
 
@@ -71,7 +79,7 @@ function setDateToTomorrow() {
 
 function resetForm() {
     $("#title").val("");
-    $("#quantity").val("1");
+    $("#quantity").val("");
     setDateToTomorrow();
     $("#title").get(0).focus();
     $("#submit-btn").attr("disabled", "disabled");
