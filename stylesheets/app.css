@@ -188,3 +188,8 @@ body {
   background-color: #f0f3f5;
   left: 50%;
 }
+
+#welcome-message {
+  display: none;
+  opacity: 0;
+}

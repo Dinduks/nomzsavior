@@ -8,11 +8,18 @@ app.models.AppStorage = {
             return false;
         }
     },
-    save: function (id, items) {
-        localStorage.setItem(id, JSON.stringify(items));
+    save: function (key, value) {
+        localStorage.setItem(key, JSON.stringify(value));
     },
     get: function (id) {
         var result = localStorage.getItem(id);
-        return (result) ? JSON.parse(result) : "";
+        return (result) ? JSON.parse(result) : null;
+    },
+    isWelcomeMessageAlreadySeen: function () {
+        if (!this.get("isWelcomeMessageAlreadySeen")) return false;
+        else return true;
+    },
+    welcomeMessageSeen: function () {
+        localStorage.setItem("isWelcomeMessageAlreadySeen", "true");
     }
 };
