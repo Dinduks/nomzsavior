@@ -64,7 +64,8 @@ window.mainScreen = {
                         var quantity = $el.data("quantity");
 
                         if (quantity == 1) {
-                            $el.remove();
+                            Zanimo.transition(el, "opacity", "0", 100)
+                                .then(function () { $el.remove(); });
                         } else {
                             hideDeleteIcon($el.children().first().get(0)).then(function () {
                                 $el.find(".quantity").html(quantity - 1);
