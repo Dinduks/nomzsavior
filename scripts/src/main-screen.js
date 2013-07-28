@@ -57,26 +57,39 @@ window.mainScreen = {
         this.screen.addEventListener('click', onClick);
 
         function onClick (evt) {
-            if(/delete/.test(evt.target.className) || /delete-icons/.test(evt.target.className)) {
-                $(evt.target).parents().each(function (i, el) {
-                    if (el.tagName == "LI") {
-                        var $el = $(el);
-                        var quantity = $el.data("quantity");
-
-                        if (quantity == 1) {
-                            Zanimo.transition(el, "opacity", "0", 100)
-                                .then(function () { $el.remove(); });
-                        } else {
-                            hideDeleteIcon($el.children().first().get(0)).then(function () {
-                                $el.find(".quantity").html(quantity - 1);
-                                $el.data("quantity", quantity - 1);
-                            });
-                        }
-
-                        items.removeById(el.id);
-                    }
-                });
+            if (!/delete/.test(evt.target.className) &&
+                !/delete-icons/.test(evt.target.className)) {
+                return true;
             }
+
+            $(evt.target).parents().each(function (i, el) {
+                if (el.tagName != "LI") {
+                    return true;
+                }
+
+                var $el = $(el);
+                var quantity = $el.data("quantity");
+
+                if (quantity == 1) {
+                    Zanimo.transition(el, "opacity", "0", 100)
+                        .then(function () { $el.remove(); });
+                } else {
+                    $el.data("quantity", quantity - 1);
+                    hideDeleteIcon($el.children().first().get(0)).then(function () {
+
+                    var quantityBox = $el.find(".quantity").first().get(0);
+                    Zanimo.transition(quantityBox, "opacity", "0", 100)
+                        .then(function () {
+                            Zanimo.transition(quantityBox, "opacity", "1", 100);
+                        })
+                        .then(function () {
+                            $el.find(".quantity").html(quantity - 1);
+                        });
+                    });
+                }
+
+                items.removeById(el.id);
+            });
         }
     },
     _getExpirationInfo: function (date) {
