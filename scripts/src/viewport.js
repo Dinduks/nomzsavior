@@ -9,8 +9,6 @@ $(document).ready(function () {
     window.viewport = {
         init : function () {
             this.container = $$('screens-container');
-            this.left = $$('main-screen');
-            this.right = $$('add-form-screen');
             this.flag = true;
         },
         getPosition : function () {
@@ -27,10 +25,7 @@ $(document).ready(function () {
 
     window.viewport.init();
 
-    $("#return").on("click", function () {
-        window.viewport.switchPanel();
-    });
-
+    // Support submitting the form using the enter key
     $("#title").on("keypress", function (event) {
         if (event.keyCode == 13 && $(this).val() !== "") submitForm();
     });
@@ -41,14 +36,10 @@ $(document).ready(function () {
         if (event.keyCode == 13 && $(this).val() !== "") submitForm();
     });
 
+    $("#return").on("click", function () { window.viewport.switchPanel(); });
     $("#submit-btn").on("click", function () { submitForm(); return true; });
 
-    $("#title").on("keyup", function () {
-        if($(this).val() !== "") $("#submit-btn").removeAttr("disabled");
-        else $("#submit-btn").attr("disabled", "disabled");
-
-        return true;
-    });
+    enableAddBtnToggling();
 });
 
 function submitForm() {
@@ -67,6 +58,10 @@ function submitForm() {
     resetForm();
 }
 
+/**
+ * Given a date, sets the value of the date-picker field to the next day's
+ * Also sets the minimal possible date to today's
+ */
 function setDateToTomorrow() {
     var date = new Date();
     date.setTime(date.getTime() + 60*60*24*1000);
@@ -80,4 +75,17 @@ function resetForm() {
     setDateToTomorrow();
     $("#title").get(0).focus();
     $("#submit-btn").attr("disabled", "disabled");
+}
+
+/**
+ * Enable the ADD button if the product name is specified
+ * Disable it otherwise
+ */
+function enableAddBtnToggling() {
+    $("#title").on("keyup", function () {
+        if($(this).val() !== "") $("#submit-btn").removeAttr("disabled");
+        else $("#submit-btn").attr("disabled", "disabled");
+
+        return true;
+    });
 }
