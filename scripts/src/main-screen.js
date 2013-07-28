@@ -3,7 +3,11 @@ var $$  = function (s) { return document.getElementById(s); };
 window.mainScreen = {
     init : function () {
         this.screen = $$('main-screen');
-        var touched = false, x = 0, nx = 0, swiped = false, iconNotVisible = true;
+        var touched = false,
+            x = 0,
+            nx = 0,
+            swiped = false,
+            iconNotVisible = true;
 
         function onTouchstart (evt) {
             if (touched) return;
@@ -13,7 +17,9 @@ window.mainScreen = {
             }
         }
 
-        function onTouchmove (evt) {
+        function onTouchmove(evt) {
+            if ($(event.target).data("expired") == true) return;
+
             if (!swiped && touched && /inner/.test(evt.target.className)){
                 touched = true;
                 nx = evt.touches[0].pageX;
@@ -113,6 +119,8 @@ window.mainScreen = {
 
         if (this._getExpirationInfo(d).days < 0) {
             div0.className = "inner gray";
+            div0.setAttribute("style", "width: calc(100% - 42px)");
+            div0.setAttribute("data-expired", true);
         } else if (this._getExpirationInfo(d).days < 2) {
             div0.className = "inner red";
         } else if (this._getExpirationInfo(d).days >= 2 &&
