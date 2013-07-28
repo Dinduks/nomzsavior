@@ -23,22 +23,29 @@ window.mainScreen = {
             if (!swiped && touched && /inner/.test(evt.target.className)){
                 touched = true;
                 nx = evt.touches[0].pageX;
-                if (Math.abs(nx-x)>10) {
+                if (Math.abs(nx - x) > 10) {
+                    if (nx - x > 10) hideDeleteIcon(evt.target);
+                    else if (nx - x < 10) showDeleteIcon(evt.target);
                     swiped = true;
-                    switchDeleteIcon(evt.target);
                 }
             }
+        }
+
+        function hideDeleteIcon(t) {
+            return Zanimo(t).then(function (t) {
+                return Zanimo.transition(t, "left", "0", 100);
+            });
+        }
+
+        function showDeleteIcon(t) {
+            return Zanimo(t).then(function (t) {
+                return Zanimo.transition(t, "left", "-42px", 100);
+            });
         }
 
         function onTouchend (evt) {
             touched = false;
             swiped = false;
-        }
-
-        function switchDeleteIcon(t) {
-            return Zanimo(t).then(function (t) {
-                    return Zanimo.transition(t, 'left', t.style.left == "-42px" ? '0': '-42px', 100);
-            });
         }
 
         this.screen.addEventListener('touchstart', onTouchstart);
