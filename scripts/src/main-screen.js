@@ -52,9 +52,37 @@ window.mainScreen = {
             }
         }
     },
+    _getExpirationInfo: function (date) {
+        var daysDifferenceBetweenDates = function (date1, date2) {
+            return (date1.getTime() - date2.getTime()) / millisecondsInADay;
+        };
+
+        var today = new Date();
+        var millisecondsInADay = 60 * 60 * 24 * 1000;
+
+        today.setHours(0, 0, 0, 0);
+        date.setHours(0, 0, 0, 0);
+
+        if (daysDifferenceBetweenDates(today, date) === 0) {
+            return ["0", "day"];
+        } else if (daysDifferenceBetweenDates(date, today) >= 2 &&
+                   daysDifferenceBetweenDates(date, today) < 7) {
+            var days = (date.getTime() - today.getTime()) / (millisecondsInADay);
+            return [days, "days"];
+        } else if (daysDifferenceBetweenDates(date, today) >= 7) {
+            return ["+ 1", "week"];
+        } else if (daysDifferenceBetweenDates(date, today) >= 1) {
+            return ["1", "day"];
+        } else {
+            var diff = daysDifferenceBetweenDates(date, today);
+            return [diff, "day" + ((diff === -1) ? "" : "s")];
+        }
+
+        throw "Couldn't process the specified date";
+    },
     _item : function (item) {
-        var mon = ["JANVIER", "FEVRIER", "MARS", "AVRIL", "MAI", "JUIN", "JUILLET", "AOUT", "SEPTEMBRE", "OCTOBRE", "NOVEMBRE", "DECEMBRE"];
         var d = new Date(parseInt(item.expirationDate, 10));
+        var expirationText = window.mainScreen._getExpirationInfo(d);
         var li = document.createElement('li'),
             div0 =  document.createElement('div'),
             div1 =  document.createElement('div'),
@@ -65,7 +93,7 @@ window.mainScreen = {
 
         div0.className = "inner red";
         div1.className = "case-item";
-        div1.innerHTML = "<span class='parent'>"+ d.getDate() +"<br><span class='month'>" + mon[d.getMonth()] + "</span></span>";
+        div1.innerHTML = "<span class='parent'>"+ expirationText[0] +"<br><span class='month'>" + expirationText[1] + "</span></span>";
         div2.className = "item";
         div2.innerHTML = item.name + " <span>"+ item.quantity +"</span>";
         div3.innerHTML = "<img src='images/icon-delete.jpg' class='delete-icon' alt='Supprimer un élément'>";
