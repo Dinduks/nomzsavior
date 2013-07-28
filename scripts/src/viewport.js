@@ -39,13 +39,6 @@ $(document).ready(function () {
     $("#return").on("click", function () { window.viewport.switchPanel(); });
     $("#submit-btn").on("click", function () { submitForm(); return true; });
 
-    $("#quantity").on("focus", function () {
-        var $el = $(this);
-        var value = $el.val();
-        if (!value) {
-            $el.val(1);
-        }
-    });
 
     enableAddBtnToggling();
 });
@@ -91,9 +84,17 @@ function resetForm() {
  */
 function enableAddBtnToggling() {
     $("#title").on("keyup", function () {
-        if($(this).val() !== "") $("#submit-btn").removeAttr("disabled");
-        else $("#submit-btn").attr("disabled", "disabled");
+        if ($(this).val() !== "") {
+            $("#submit-btn").removeAttr("disabled");
+            setQuantityTo1();
+        } else {
+            $("#submit-btn").attr("disabled", "disabled");
+        }
 
         return true;
     });
+
+    function setQuantityTo1() {
+        if (!$("#quantity").val()) $("#quantity").val(1);
+    }
 }
