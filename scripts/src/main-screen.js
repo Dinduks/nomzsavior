@@ -1,4 +1,5 @@
 var $$  = function (s) { return document.getElementById(s); };
+var appStorage = app.models.AppStorage;
 
 window.mainScreen = {
     init: function () {
@@ -222,13 +223,32 @@ window.mainScreen = {
         ul.innerHTML = "";
         ul.appendChild(li);
 
-        items.collection.forEach(function (item) {
-            ul.appendChild(self._renderItem(item));
-        });
+        if (items.collection.length === 0) {
+            if (!appStorage.isWelcomeMessageAlreadySeen()) {
+                this._displayWelcomeMessage();
+                appStorage.welcomeMessageSeen();
+            }
+        } else {
+            items.collection.forEach(function (item) {
+                ul.appendChild(self._renderItem(item));
+            });
+        }
 
         $("#add-item-btn").on("click", function () {
             window.viewport.switchPanel().then(function () { $("#title").get(0).focus(); });
             return false;
       });
+    },
+    _displayWelcomeMessage: function () {
+        $.ajax({
+            url: 'welcome-message.html',
+            success: onSuccessCB
+        });
+
+        function onSuccessCB(data) {
+            $('#welcome-message > p').html(data);
+            $('#welcome-message').show();
+            Zanimo.transition($$('#welcome-message'), 'opacity', '1', 100);
+        }
     }
 };
