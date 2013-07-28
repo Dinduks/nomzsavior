@@ -18,7 +18,7 @@ window.mainScreen = {
         }
 
         function onTouchmove(evt) {
-            if ($(event.target).data("expired") === true) return;
+            if ($(evt.target).data("expired") === true) return;
 
             if (!swiped && touched && /inner/.test(evt.target.className)){
                 touched = true;
