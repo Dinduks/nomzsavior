@@ -5,13 +5,21 @@ describe("window.mainScreen._getExpirationInfo()", function () {
 
     it("returns 'Today' when it's the case", function () {
         var date = new Date();
-        expect(getExpirationInfo(date)).toEqual(["0", "day"]);
+        expect(getExpirationInfo(date)).toEqual({
+            firstLine: "0",
+            secondLine: "day",
+            days: 0
+        });
     });
 
     it("returns 'Tomorrow' when it's the case", function () {
         var date = new Date();
         addDaysToDate(date, 1);
-        expect(getExpirationInfo(date)).toEqual(["1", "day"]);
+        expect(getExpirationInfo(date)).toEqual({
+            firstLine: "1",
+            secondLine: "day",
+            days: 1
+        });
     });
 
     it("returns the numbers of days left when >= 2 and < 7", function () {
@@ -19,21 +27,37 @@ describe("window.mainScreen._getExpirationInfo()", function () {
 
         date = new Date();
         addDaysToDate(date, 2);
-        expect(getExpirationInfo(date)).toEqual([2, "days"]);
+        expect(getExpirationInfo(date)).toEqual({
+            firstLine: 2,
+            secondLine: "days",
+            days: 2
+        });
 
         date = new Date();
         addDaysToDate(date, 5);
-        expect(getExpirationInfo(date)).toEqual([5, "days"]);
+        expect(getExpirationInfo(date)).toEqual({
+            firstLine: 5,
+            secondLine: "days",
+            days: 5
+        });
 
         date = new Date();
         addDaysToDate(date, 6);
-        expect(getExpirationInfo(date)).toEqual([6, "days"]);
+        expect(getExpirationInfo(date)).toEqual({
+            firstLine: 6,
+            secondLine: "days",
+            days: 6
+        });
     });
 
     it("returns 'more than a week' when it's the case", function () {
         var date = new Date();
         addDaysToDate(date, 42);
-        expect(getExpirationInfo(date)).toEqual(["+ 1", "week"]);
+        expect(getExpirationInfo(date)).toEqual({
+            firstLine: "+ 1",
+            secondLine: "week",
+            days: 42
+        });
     });
 
     it("returns 'Expired' when it's the case", function () {
@@ -41,10 +65,18 @@ describe("window.mainScreen._getExpirationInfo()", function () {
 
         date = new Date();
         addDaysToDate(date, -6);
-        expect(getExpirationInfo(date)).toEqual([-6, "days"]);
+        expect(getExpirationInfo(date)).toEqual({
+            firstLine: -6,
+            secondLine: "days",
+            days: -6
+        });
 
         date = new Date();
         addDaysToDate(date, -1);
-        expect(getExpirationInfo(date)).toEqual([-1, "day"]);
+        expect(getExpirationInfo(date)).toEqual({
+            firstLine: -1,
+            secondLine: "day",
+            days: -1
+        });
     });
 });

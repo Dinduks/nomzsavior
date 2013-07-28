@@ -94,6 +94,10 @@ body {
 .item-list .green { background-color: #72b970; }
 .item-list .green .case-item { background-color: #599a57; }
 
+/* Green item */
+.item-list .gray { background-color: #e6e6e6; }
+.item-list .gray .case-item { background-color: #cfcfcf; }
+
 /* -- Add screen -- */
 .add-field input {
   background-color: #f5f5f5;

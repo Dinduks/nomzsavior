@@ -64,18 +64,38 @@ window.mainScreen = {
         date.setHours(0, 0, 0, 0);
 
         if (daysDifferenceBetweenDates(today, date) === 0) {
-            return ["0", "day"];
+            return {
+                firstLine: "0",
+                secondLine: "day",
+                days: 0
+            };
         } else if (daysDifferenceBetweenDates(date, today) >= 2 &&
                    daysDifferenceBetweenDates(date, today) < 7) {
             var days = (date.getTime() - today.getTime()) / (millisecondsInADay);
-            return [days, "days"];
+            return {
+                firstLine: days,
+                secondLine: "days",
+                days: days
+            };
         } else if (daysDifferenceBetweenDates(date, today) >= 7) {
-            return ["+ 1", "week"];
+            return {
+                firstLine: "+ 1",
+                secondLine: "week",
+                days: daysDifferenceBetweenDates(date, today)
+            };
         } else if (daysDifferenceBetweenDates(date, today) >= 1) {
-            return ["1", "day"];
+            return {
+                firstLine: "1",
+                secondLine: "day",
+                days: 1
+            };
         } else {
             var diff = daysDifferenceBetweenDates(date, today);
-            return [diff, "day" + ((diff === -1) ? "" : "s")];
+            return {
+                firstLine: diff,
+                secondLine: "day" + ((diff === -1) ? "" : "s"),
+                days: diff
+            };
         }
 
         throw "Couldn't process the specified date";
@@ -84,16 +104,26 @@ window.mainScreen = {
         var d = new Date(parseInt(item.expirationDate, 10));
         var expirationText = window.mainScreen._getExpirationInfo(d);
         var li = document.createElement('li'),
-            div0 =  document.createElement('div'),
-            div1 =  document.createElement('div'),
+            div0 = document.createElement('div'),
+            div1 = document.createElement('div'),
             div2 = document.createElement('div'),
             div3 = document.createElement('div');
 
         li.id = item.id;
 
-        div0.className = "inner red";
+        if (this._getExpirationInfo(d).days < 0) {
+            div0.className = "inner gray";
+        } else if (this._getExpirationInfo(d).days < 2) {
+            div0.className = "inner red";
+        } else if (this._getExpirationInfo(d).days >= 2 &&
+                  this._getExpirationInfo(d).days < 7) {
+            div0.className = "inner orange";
+        } else {
+            div0.className = "inner green";
+        }
+
         div1.className = "case-item";
-        div1.innerHTML = "<span class='parent'>"+ expirationText[0] +"<br><span class='month'>" + expirationText[1] + "</span></span>";
+        div1.innerHTML = "<span class='parent'>"+ expirationText.firstLine +"<br><span class='month'>" + expirationText.secondLine + "</span></span>";
         div2.className = "item";
         div2.innerHTML = item.name + " <span>"+ item.quantity +"</span>";
         div3.innerHTML = "<img src='images/icon-delete.jpg' class='delete-icon' alt='Supprimer un élément'>";
