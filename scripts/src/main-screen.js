@@ -83,7 +83,8 @@ window.mainScreen = {
                             Zanimo.transition(quantityBox, "opacity", "1", 100);
                         })
                         .then(function () {
-                            $el.find(".quantity").html(quantity - 1);
+                            if (quantity > 2) $el.find(".quantity").html(quantity - 1);
+                            else $el.find(".quantity").html("");
                         });
                     });
                 }
@@ -167,7 +168,8 @@ window.mainScreen = {
         div1.className = "case-item";
         div1.innerHTML = "<span class='parent'>"+ expirationText.firstLine +"<br><span class='month'>" + expirationText.secondLine + "</span></span>";
         div2.className = "item";
-        div2.innerHTML = item.name + " <span class='quantity'>"+ item.quantity +"</span>";
+        div2.innerHTML = item.name;
+        if (item.quantity > 1) div2.innerHTML += " <span class='quantity'>"+ item.quantity +"</span>";
         div3.innerHTML = "<img src='images/icon-delete.jpg' class='delete-icon' alt='Supprimer un élément'>";
         div3.className = "delete";
 
