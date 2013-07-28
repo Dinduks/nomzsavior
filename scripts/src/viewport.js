@@ -65,9 +65,11 @@ function submitForm() {
  */
 function setDateToTomorrow() {
     var date = new Date();
-    date.setTime(date.getTime() + 60*60*24*1000);
-    $('#date-picker').val(date.toJSON().slice(0,10));
-    $('#date-picker').attr("min", (new Date()).toJSON().slice(0,10));
+    var timezoneDifference = Math.abs(date.getTimezoneOffset()) * 60*1000;
+    var oneDayInMs = 60*60*24*1000;
+    date.setTime(date.getTime() + oneDayInMs + timezoneDifference);
+    $('#date-picker').val(date.toJSON().slice(0, 10));
+    $('#date-picker').attr("min", (new Date()).toJSON().slice(0, 10));
 }
 
 function resetForm() {
