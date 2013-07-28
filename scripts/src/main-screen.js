@@ -18,7 +18,7 @@ window.mainScreen = {
         }
 
         function onTouchmove(evt) {
-            if ($(event.target).data("expired") == true) return;
+            if ($(event.target).data("expired") === true) return;
 
             if (!swiped && touched && /inner/.test(evt.target.className)){
                 touched = true;
@@ -29,6 +29,8 @@ window.mainScreen = {
                     swiped = true;
                 }
             }
+
+            evt.preventDefault();
         }
 
         function hideDeleteIcon(t) {
