@@ -145,7 +145,6 @@ body {
   text-transform: uppercase;
   font-weight: bold;
   color: #fff;
-
   display: block;
   border: none;
   width: 50%;
@@ -174,11 +173,11 @@ body {
   left: 0;
 }
 #screens-container div.screen {
-  position:absolute;
-  width:50%;
-  height:100%;
-  top:0;
-  left:0;
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  top: 0;
+  left: 0;
   overflow: scroll;
   -webkit-overflow-scrolling: touch;
 }
