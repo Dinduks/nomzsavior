@@ -47,19 +47,22 @@ var ItemsCollection = (function () {
                 current.quantity += item.quantity;
                 this._size += item.quantity;
 
-                break;
+                this.sort();
+                this.saveAllInfo();
+
+                return;
             }
         }
 
         this.append(item);
         this.sort();
+        this.saveAllInfo();
     };
 
     ItemsCollection.prototype.append = function (item) {
         this._size += item.quantity;
         this.collection.push(item);
-        appStorage.save(this.name, this.collection);
-        appStorage.save("size", this._size);
+        this.saveAllInfo();
     };
 
     ItemsCollection.prototype.removeById = function (id) {
@@ -74,8 +77,7 @@ var ItemsCollection = (function () {
             }
         }
 
-        appStorage.save(this.name, this.collection);
-        appStorage.save("size", this._size);
+        this.saveAllInfo();
     };
 
     ItemsCollection.prototype.remove = function (item) {
@@ -90,8 +92,7 @@ var ItemsCollection = (function () {
             }
         }
 
-        appStorage.save(this.name, this.collection);
-        appStorage.save("size", this._size);
+        this.saveAllInfo();
     };
 
     ItemsCollection.prototype.size = function () {
@@ -133,6 +134,11 @@ var ItemsCollection = (function () {
         }
 
         return this;
+    };
+
+    ItemsCollection.prototype.saveAllInfo = function (item) {
+        appStorage.save(this.name, this.collection);
+        appStorage.save("size", this._size);
     };
 
     return ItemsCollection;

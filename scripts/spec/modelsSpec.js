@@ -24,6 +24,25 @@ describe("Item.constructor()", function() {
   });
 });
 
+describe("ItemsCollection.add()", function() {
+    it("merges items with the same name and same expiration date", function () {
+        localStorage.clear();
+
+        var item0, item1, itemsCollection;
+
+        itemsCollection = new ItemsCollection();
+        item0 = new Item("foo", 666, 1);
+        item1 = new Item("foo", 666, 3);
+        itemsCollection.add(item0);
+        itemsCollection.add(item1);
+
+        expect(itemsCollection.size()).toEqual(4);
+        expect(itemsCollection.getNth(0).name).toEqual("foo");
+        expect(itemsCollection.getNth(0).quantity).toEqual(4);
+        expect(itemsCollection.getNth(1)).toBeUndefined();
+    });
+});
+
 describe("ItemsCollection: size, add, remove, removeById, getNth", function() {
   var item0, item1, item2;
   var items;
