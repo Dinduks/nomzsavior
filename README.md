@@ -1,5 +1,13 @@
 # Mange pas ça
 
+## TODO
+
+* Confirm message after adding an iten
+* Icon or animation on Add button after adding element
+* Welcome message
+* Improve data picker
+* Beautiful icon
+
 ## Requirements
 You need npm & grunt (`npm install -g grunt-cli`).
 
