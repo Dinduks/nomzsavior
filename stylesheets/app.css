@@ -8,7 +8,7 @@ body {
 .item-list li {
   list-style: none;
   position: relative;
-  height: 60px;
+  height: 70px;
   width: 100%;
   margin-bottom: 2px;
 }
@@ -22,13 +22,12 @@ body {
 .item-list li div {
   display: inline-block;
   vertical-align: top;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, .2);
 }
 
 /* Number of items */
 .item-list .case-item {
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   font-size: 20px;
   line-height: 16px;
   color: #fff;
@@ -48,7 +47,7 @@ body {
 /* Title of product */
 .item-list .item {
   font-size: 18px;
-  line-height: 60px;
+  line-height: 70px;
   color: #fff;
   padding-left: 15px;
 }
@@ -76,10 +75,10 @@ body {
 }
 
 /* Add item */
-.item-list .add { background-color: #f5f5f5; }
-.item-list .add .case-item { background-color: #ebebeb; }
+.item-list .add { background-color: #506473; }
+.item-list .add .case-item { background-color: #445562; }
 .item-list .add .case-item img { padding-top: 14px; }
-.item-list .add .item { color: #333333; text-shadow: none; font-weight: bold; }
+.item-list .add .item { color: #fff; font-weight: bold; }
 #add-item-btn { cursor: pointer; }
 
 /* Red item */
@@ -100,16 +99,17 @@ body {
 
 /* -- Add screen -- */
 .add-field input {
-  background-color: #f5f5f5;
-  height: 60px;
+  background-color: #506473;
+  height: 70px;
+  line-height: 60px;
   font-family: 'TitilliumRegular', sans-serif;
   margin: 0;
   padding: 0 0 0 20px;
   border: 0;
   outline: 0;
-  color: #343434;
+  color: #fff;
   font-size: 18px;
-  line-height: 60px;
+  box-shadow: none;
 
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
@@ -124,7 +124,7 @@ body {
 #bottom-btns {
   position: absolute;
   bottom: 0;
-  height: 59px;
+  height: 70px;
 }
 
 #submit-btn {
@@ -132,13 +132,12 @@ body {
   text-transform: uppercase;
   font: 21px/21px 'TitilliumRegular', sans-serif;
   color: #fff;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, .2);
   border: none;
   display: block;
   width: calc(50% - 1px);
   width: -moz-calc(50% - 1px);
   width: -webkit-calc(50% - 1px);
-  height: 60px;
+  height: 70px;
   margin-bottom: 2px;
   font-weight: bold;
   float: left;
@@ -150,7 +149,6 @@ body {
   text-transform: uppercase;
   font: 21px/21px 'TitilliumRegular', sans-serif;
   color: #fff;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, .2);
   border: none;
   display: block;
   width: calc(50% - 3px);
@@ -158,7 +156,7 @@ body {
   width: -webkit-calc(50% - 3px);
   margin-left: 1px;
   margin-right: 2px;
-  height: 60px;
+  height: 70px;
   margin-bottom: 2px;
   font-weight: bold;
   cursor: pointer;
@@ -184,18 +182,20 @@ body {
   left:0;
 }
 #screens-container div.screen {
-    position:absolute;
-    width:50%;
-    height:100%;
-    top:0;
-    left:0;
-    overflow: scroll;
-    -webkit-overflow-scrolling: touch;
+  position:absolute;
+  width:50%;
+  height:100%;
+  top:0;
+  left:0;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
 }
 #screens-container div.screen.left {
-  background-color: #343434;
+  /*background-color: #343434;*/
+  background-color: #f0f3f5;
 }
 #screens-container div.screen.right {
-    background-color: #343434;
-    left: 50%;
+  /*background-color: #343434;*/
+  background-color: #f0f3f5;
+  left: 50%;
 }
