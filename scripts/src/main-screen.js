@@ -246,7 +246,8 @@ window.mainScreen = {
         });
 
         function onSuccessCB(data) {
-            $('#welcome-message > p').html(data);
+            $('<div class="overlay">').insertAfter('#welcome-message');
+            $('#welcome-message').html(data);
             $('#welcome-message').show();
             Zanimo.transition($$('#welcome-message'), 'opacity', '1', 100);
         }

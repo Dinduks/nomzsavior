@@ -201,7 +201,56 @@ body {
   left: 50%;
 }
 
+.overlay {
+  background: rgba(0, 0, 0, .6);
+  position: absolute;
+  z-index: 1000;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
 #welcome-message {
-  display: none;
-  opacity: 0;
+  background-color: #fff;
+  position: absolute;
+  display: block;
+  width: 280px;
+  left: 50%;
+  margin-left: -140px;
+  margin-top: 40px;
+  z-index: 1100;
+
+  /*opacity: 0;*/
+
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, .4);
+     -moz-box-shadow: 0 0 10px rgba(0, 0, 0, .4);
+      -ms-box-shadow: 0 0 10px rgba(0, 0, 0, .4);
+       -o-box-shadow: 0 0 10px rgba(0, 0, 0, .4);
+          box-shadow: 0 0 10px rgba(0, 0, 0, .4);
+}
+
+#welcome-message h1 {
+  font-size: 24px;
+  padding: 10px;
+}
+
+#welcome-message p {
+  font-size: 16px;
+  line-height: 20px;
+  padding: 10px;
+}
+
+#welcome-message .btn {
+  background-color: #72b970;
+  font: 21px/21px 'TitilliumRegular', sans-serif;
+  text-transform: uppercase;
+  display: block;
+  width: 100%;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  height: 45px;
+  line-height: 45px;
+  font-weight: bold;
 }
