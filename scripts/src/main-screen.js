@@ -18,7 +18,7 @@ window.mainScreen = {
         }
 
         function onTouchmove(evt) {
-            //if ($(evt.target).data("expired") === true) return;
+            if ($(evt.target).data("expired") === true) return;
 
             if (!swiped && touched && /inner/.test(evt.target.className)){
                 touched = true;
@@ -186,9 +186,9 @@ window.mainScreen = {
         div1.innerHTML = "<span class='parent'>"+ expirationText.firstLine +"<br><span class='month'>" + expirationText.secondLine + "</span></span>";
         div2.className = "item";
         div2.innerHTML = item.name;
-        if (item.quantity > 1) div2.innerHTML += " <span class='quantity'>"+ item.quantity +"</span>";
+        if (item.quantity > 1) div2.innerHTML += " <span class='quantity'>"+ item.quantity +"</span>";
         div3.className = "delete";
-        icon2.className = "icon-cross";
+        icon2.className = "delete-icons icon-cross";
 
         div0.appendChild(div1);
         div0.appendChild(div2);
