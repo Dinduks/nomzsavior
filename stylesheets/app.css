@@ -57,6 +57,7 @@ body {
   line-height: 70px;
   color: #fff;
   padding-left: 15px;
+  white-space: nowrap;
 }
 
 .item-list .item span {
