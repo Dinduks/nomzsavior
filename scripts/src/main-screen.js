@@ -239,7 +239,7 @@ window.mainScreen = {
 
         function onSuccessCB(data) {
             $('<div class="overlay">').insertAfter('#welcome-message');
-            $('#welcome-message').html(data);
+            $('#welcome-message').html(data.replace("$URL", window.location.hostname));
             $('#welcome-message').show();
             Zanimo.transition($$('#welcome-message'), 'opacity', '1', 100);
         }
