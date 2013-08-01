@@ -30,16 +30,6 @@ window.mainScreen = {
                     swiped = true;
                 }
             }
-
-            /*
-            *
-            * Here is the part of the code who disabled the scroll on iOS
-            * Hope to fix the problem realy soon
-            * Without this preventDefault, we can swipe between both screen with a "touch slide"
-            *
-            */
-
-            evt.preventDefault();
         }
 
         function hideDeleteIcon(t) {
