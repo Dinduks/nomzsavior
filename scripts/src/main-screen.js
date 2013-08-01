@@ -224,10 +224,7 @@ window.mainScreen = {
         ul.appendChild(li);
 
         if (items.collection.length === 0) {
-            //if (!appStorage.isWelcomeMessageAlreadySeen()) {
-                this._displayWelcomeMessage();
-                //appStorage.welcomeMessageSeen();
-            //}
+            this._displayWelcomeMessage();
         } else {
             items.collection.forEach(function (item) {
                 ul.appendChild(self._renderItem(item));
