@@ -18,7 +18,7 @@ window.mainScreen = {
         }
 
         function onTouchmove(evt) {
-            if ($(evt.target).data("expired") === true) return;
+            //if ($(evt.target).data("expired") === true) return;
 
             if (!swiped && touched && /inner/.test(evt.target.className)){
                 touched = true;
@@ -29,6 +29,14 @@ window.mainScreen = {
                     swiped = true;
                 }
             }
+
+            /*
+            *
+            * Here is the part of the code who disabled the scroll on iOS
+            * Hope to fix the problem realy soon
+            * Without this preventDefault, we can swipe between both screen with a "touch slide"
+            *
+            */
 
             evt.preventDefault();
         }
@@ -148,7 +156,8 @@ window.mainScreen = {
             div0 = document.createElement('div'),
             div1 = document.createElement('div'),
             div2 = document.createElement('div'),
-            div3 = document.createElement('div');
+            div3 = document.createElement('div'),
+            icon2 = document.createElement('span');
 
         li.id = item.id;
 
@@ -170,11 +179,12 @@ window.mainScreen = {
         div2.className = "item";
         div2.innerHTML = item.name;
         if (item.quantity > 1) div2.innerHTML += " <span class='quantity'>"+ item.quantity +"</span>";
-        div3.innerHTML = "<img src='images/icon-delete.jpg' class='delete-icon' alt='Supprimer un élément'>";
         div3.className = "delete";
+        icon2.className = "icon-cross";
 
         div0.appendChild(div1);
         div0.appendChild(div2);
+        div3.appendChild(icon2);
         li.appendChild(div0);
         li.appendChild(div3);
 
@@ -187,17 +197,17 @@ window.mainScreen = {
             ul = document.querySelector('.item-list ul');
             li = document.createElement('li'),
             div1 =  document.createElement('div'),
-            img = new Image(),
+            icon = document.createElement('span'),
             div2 = document.createElement('div');
 
         li.className = "add";
         li.id = "add-item-btn";
         div1.className = "case-item";
-        img.src = "images/icon-add.jpg";
+        icon.className = "icon-plus";
         div2.className = "item";
         div2.innerHTML = "Add an item";
 
-        div1.appendChild(img);
+        div1.appendChild(icon);
         li.appendChild(div1);
         li.appendChild(div2);
 
