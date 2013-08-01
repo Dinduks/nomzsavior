@@ -153,37 +153,20 @@ body {
   float: left;
 }
 
-#return { background-color: #506473; }
+#return { background-color: #506473; cursor: pointer; }
 #submit-btn {
   position: relative;
   background-color: #72b970;
+  cursor: pointer;
 }
 #submit-btn .icon-check {
+  opacity: 0;
   position: absolute;
-  /*margin-left: 10px;*/
-  left: 50%;
-  margin-left: -21px;
-  font-size: 42px;
-  margin-top: -10px;
-  opacity: .2;
+  margin-left: 10px;
+  font-size: 18px;
+  padding-top: 2px;
 }
 #submit-btn:disabled { background-color: #d7dadb; }
-
-@-webkit-keyframes fadeIn {
-  from { font-size: 0; }
-  to { opacity: 60px; }
-}
-@keyframes fadeIn {
-  from { font-size: 0; }
-  to { opacity: 60px; }
-}
-
-.fadeIn {
-  opacity: 1;
-
-  -webkit-animation: fadeIn .3s ease backwards;
-          animation: fadeIn .3s ease backwards;
-}
 
 /* Default */
 #main-container {

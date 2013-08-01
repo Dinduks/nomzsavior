@@ -53,15 +53,17 @@ function submitForm() {
     date  = new Date($("#date-picker").val()).getTime();
     quantity = parseInt($("#quantity").val(), 10);
 
-    // var icon3 = document.createElement('span');
-    // icon3.className = "icon-check";
-
-    $('.icon-check').show();
+    $(".icon-check").css("opacity", "1");
 
     item = new Item(title, date, quantity);
     window.items.add(item);
 
     resetForm();
+
+    setTimeout(function () {
+        $(".icon-check").css("opacity", "0");
+        $("#submit-btn").attr("disabled", "disabled");
+    }, 1000);
 }
 
 /**
@@ -81,8 +83,10 @@ function resetForm() {
     $("#title").val("");
     $("#quantity").val("");
     setDateToTomorrow();
-    $("#title").get(0).focus();
-    $("#submit-btn").attr("disabled", "disabled");
+
+    // setTimeout(function () {
+        $("#title").get(0).focus();
+    // }, 1000);
 }
 
 /**
