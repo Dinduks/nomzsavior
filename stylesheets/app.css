@@ -154,8 +154,36 @@ body {
 }
 
 #return { background-color: #506473; }
-#submit-btn { background-color: #72b970; }
+#submit-btn {
+  position: relative;
+  background-color: #72b970;
+}
+#submit-btn .icon-check {
+  position: absolute;
+  /*margin-left: 10px;*/
+  left: 50%;
+  margin-left: -21px;
+  font-size: 42px;
+  margin-top: -10px;
+  opacity: .2;
+}
 #submit-btn:disabled { background-color: #d7dadb; }
+
+@-webkit-keyframes fadeIn {
+  from { font-size: 0; }
+  to { opacity: 60px; }
+}
+@keyframes fadeIn {
+  from { font-size: 0; }
+  to { opacity: 60px; }
+}
+
+.fadeIn {
+  opacity: 1;
+
+  -webkit-animation: fadeIn .3s ease backwards;
+          animation: fadeIn .3s ease backwards;
+}
 
 /* Default */
 #main-container {

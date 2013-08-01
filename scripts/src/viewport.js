@@ -53,6 +53,11 @@ function submitForm() {
     date  = new Date($("#date-picker").val()).getTime();
     quantity = parseInt($("#quantity").val(), 10);
 
+    // var icon3 = document.createElement('span');
+    // icon3.className = "icon-check";
+
+    $('.icon-check').show();
+
     item = new Item(title, date, quantity);
     window.items.add(item);
 
