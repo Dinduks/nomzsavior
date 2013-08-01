@@ -60,6 +60,8 @@ function submitForm() {
 
     resetForm();
 
+    $("#welcome-message").remove();
+
     setTimeout(function () {
         $(".icon-check").css("opacity", "0");
         $("#submit-btn").attr("disabled", "disabled");
