@@ -65,8 +65,7 @@ window.mainScreen = {
         this.screen.addEventListener('click', onClick);
 
         function onClick (evt) {
-            if (!/delete/.test(evt.target.className) &&
-                !/delete-icons/.test(evt.target.className)) {
+            if (!/icon-cross/.test(evt.target.className)) {
                 return true;
             }
 
@@ -78,26 +77,35 @@ window.mainScreen = {
                 var $el = $(el);
                 var quantity = $el.data("quantity");
 
-                if (quantity == 1) {
+                if (!$el.find(".inner").data("expired")) {
+                    if (quantity == 1) {
+                        Zanimo.transition(el, "opacity", "0", 100)
+                            .then(function () { $el.remove(); });
+
+                        items.removeById(el.id);
+                    } else if (quantity > 1) {
+                        $el.data("quantity", quantity - 1);
+                        hideDeleteIcon($el.children().first().get(0)).then(function () {
+
+                        var quantityBox = $el.find(".quantity").first().get(0);
+                        Zanimo.transition(quantityBox, "opacity", "0", 100)
+                            .then(function () {
+                                Zanimo.transition(quantityBox, "opacity", "1", 100);
+                            })
+                            .then(function () {
+                                if (quantity > 2) $el.find(".quantity").html(quantity - 1);
+                                else $el.find(".quantity").html("");
+                            });
+                        });
+
+                        items.removeById(el.id);
+                    }
+                } else {
                     Zanimo.transition(el, "opacity", "0", 100)
                         .then(function () { $el.remove(); });
-                } else {
-                    $el.data("quantity", quantity - 1);
-                    hideDeleteIcon($el.children().first().get(0)).then(function () {
 
-                    var quantityBox = $el.find(".quantity").first().get(0);
-                    Zanimo.transition(quantityBox, "opacity", "0", 100)
-                        .then(function () {
-                            Zanimo.transition(quantityBox, "opacity", "1", 100);
-                        })
-                        .then(function () {
-                            if (quantity > 2) $el.find(".quantity").html(quantity - 1);
-                            else $el.find(".quantity").html("");
-                        });
-                    });
+                    items.removeAllById(el.id);
                 }
-
-                items.removeById(el.id);
             });
         }
     },

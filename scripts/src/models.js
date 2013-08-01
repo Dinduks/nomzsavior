@@ -80,6 +80,19 @@ var ItemsCollection = (function () {
         this.saveAllInfo();
     };
 
+    ItemsCollection.prototype.removeAllById = function (id) {
+        for (var i = 0; i < this._size; i++) {
+            if (this.collection[i].id == id) {
+                this._size -= this.collection[i].quantity;
+                this.collection.splice(i, 1);
+
+                break;
+            }
+        }
+
+        this.saveAllInfo();
+    };
+
     ItemsCollection.prototype.remove = function (item) {
         for (var i = 0; i < this._size; i++) {
             if (this.collection[i].id == item.id) {

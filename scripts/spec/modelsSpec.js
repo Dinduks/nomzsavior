@@ -112,6 +112,9 @@ describe("ItemsCollection: remove, removeById, size", function() {
 
     items.removeById(item1.id);
     expect(items.size()).toEqual(9);
+
+    items.removeAllById(item1.id);
+    expect(items.size()).toEqual(0);
   });
 });
 
