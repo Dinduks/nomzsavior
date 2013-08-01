@@ -1,13 +1,13 @@
 body {
   font-family: 'TitilliumRegular', sans-serif;
   
-  -webkit-font-smoothing:antialiased;
-     -moz-font-smoothing:antialiased;
-      -ms-font-smoothing:antialiased;
-       -o-font-smoothing:antialiased;
-          font-smoothing:antialiased;
+  -webkit-font-smoothing: antialiased;
+     -moz-font-smoothing: antialiased;
+      -ms-font-smoothing: antialiased;
+       -o-font-smoothing: antialiased;
+          font-smoothing: antialiased;
 
-  text-rendering:optimizelegibility
+  text-rendering: optimizelegibility
 }
 
 /* -- Items -- */
@@ -201,33 +201,19 @@ body {
   left: 50%;
 }
 
-.overlay {
-  background: rgba(0, 0, 0, .6);
-  position: absolute;
-  z-index: 1000;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-}
-
+/* Welcome message */
 #welcome-message {
   background-color: #fff;
-  position: absolute;
   display: block;
-  width: 280px;
-  left: 50%;
-  margin-left: -140px;
-  margin-top: 40px;
-  z-index: 1100;
+  width: 92%;
+  margin: 16px auto 0;
+  color: #333333;
 
-  /*opacity: 0;*/
-
-  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, .4);
-     -moz-box-shadow: 0 0 10px rgba(0, 0, 0, .4);
-      -ms-box-shadow: 0 0 10px rgba(0, 0, 0, .4);
-       -o-box-shadow: 0 0 10px rgba(0, 0, 0, .4);
-          box-shadow: 0 0 10px rgba(0, 0, 0, .4);
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+     -moz-box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+      -ms-box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+       -o-box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+          box-shadow: 0 0 10px rgba(0, 0, 0, .2);
 }
 
 #welcome-message h1 {
@@ -241,16 +227,10 @@ body {
   padding: 10px;
 }
 
-#welcome-message .btn {
-  background-color: #72b970;
-  font: 21px/21px 'TitilliumRegular', sans-serif;
-  text-transform: uppercase;
-  display: block;
-  width: 100%;
-  color: #fff;
-  text-align: center;
-  text-decoration: none;
-  height: 45px;
-  line-height: 45px;
-  font-weight: bold;
+#welcome-message ul {
+  font-size: 16px;
+  line-height: 20px;
+  padding: 10px 0 10px 30px;
 }
+
+#welcome-message li { list-style: square; }
