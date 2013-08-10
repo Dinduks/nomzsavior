@@ -1,27 +1,39 @@
 # Mange pas ça
 
-## TODO
+The goal of *Mange pas ça* is to provide a way to:
 
-* Confirm message after adding an iten
-* Icon or animation on Add button after adding element
-* Welcome message
-* Improve data picker
-* Beautiful icon
+* Manage your food
+* Know when a product will expire
+* Know what to eat first
+
+Thus saving the environment and keeping your wallet full.
+
+*Mange pas ça* works offline, thanks to HTML5's Appcache.  
+The data is stored on the browser, thanks to HTML5's LocalStorage.
 
 ## Requirements
-You need npm & grunt (`npm install -g grunt-cli`).
-
 This application needs Local Storage in order to work, which means you cannot use
 it without a HTTP server, i.e. simply by accessing *index.html* from your disk.  
-I personally use *Mongoose* to create a light web server with my current working
-directory as a root.  
-Install it and run it: `brew install mongoose && mongoose -p 1337 &`
 
-## Setup
-`npm install`
+On Mac OS X, just browse to the application's root, and run
 
-## Compiling the TypeScript scripts
-`./build.sh`
+    (python -m SimpleHTTPServer 1337 > /dev/null 2&>1) &
 
-## Run the tests
-`open run-specs.html`
+You can also use [Mongoose](https://code.google.com/p/mongoose/) which is a light
+and easy to use HTTP server (`mongoose -p 8001 &`).
+
+## Launching the app
+Visit *index.html*: `open index.html`.
+
+## Runing the tests
+Visit *run-specs.html*: `open run-specs.html`.
+
+## Thanks
+A part of the application was built during a *hackday* in [Zenexity](http://zenexity.com/).  
+Thanks to the managers for their organization that allowed this to happen.
+
+Thanks to [my collegues who have contributed](https://github.com/Dinduks/mangepasca/graphs/contributors)
+during that day.
+
+And big thanks to [Jérémy](https://github.com/JeremDsgn) who took care of the
+design part and who did a great and hard job.
