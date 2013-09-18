@@ -1,6 +1,6 @@
-# Mange pas ça
+# nomzsavior
 
-The goal of *Mange pas ça* is to provide a way to:
+The goal of *nomzsavior* is to provide a way to:
 
 * Manage your food
 * Know when a product will expire
@@ -8,7 +8,7 @@ The goal of *Mange pas ça* is to provide a way to:
 
 Thus saving the environment and keeping your wallet full.
 
-*Mange pas ça* works offline, thanks to HTML5's Appcache.  
+*nomzsavior* works offline, thanks to HTML5's Appcache.  
 The data is stored on the browser, thanks to HTML5's LocalStorage.
 
 ## Requirements
@@ -32,7 +32,7 @@ Visit *run-specs.html*: `open run-specs.html`.
 A part of the application was built during a *hackday* in [Zenexity](http://zenexity.com/).  
 Thanks to the managers for their organization that allowed this to happen.
 
-Thanks to [my collegues who have contributed](https://github.com/Dinduks/mangepasca/graphs/contributors)
+Thanks to [my collegues who have contributed](https://github.com/Dinduks/nomzsavior/graphs/contributors)
 during that day.
 
 And big thanks to [Jérémy](https://github.com/JeremDsgn) who took care of the
