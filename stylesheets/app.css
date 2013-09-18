@@ -234,3 +234,4 @@ body {
 }
 
 #welcome-message li { list-style: square; }
+#github-ribbon { display: none; }
