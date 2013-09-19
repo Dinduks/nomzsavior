@@ -102,7 +102,7 @@ window.mainScreen = {
     },
     _getExpirationInfo: function (date) {
         var daysDifferenceBetweenDates = function (date1, date2) {
-            return (date1.getTime() - date2.getTime()) / millisecondsInADay;
+            return parseInt((date1.getTime() - date2.getTime()) / millisecondsInADay);
         };
 
         var today = new Date();
