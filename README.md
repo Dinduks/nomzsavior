@@ -2,7 +2,7 @@
 
 The goal of *nomzsavior* is to provide a way to:
 
-* Manage your food
+* Track your groceries
 * Know when a product will expire
 * Know what to eat first
 
