@@ -105,7 +105,8 @@ function enableAddBtnToggling() {
     });
 
     $("#quantity").on("keyup", function () {
-        if (Number.isInteger(Number.toInteger($(this).val())) && $(this).val() > 0) {
+        if ($("#title").val() !== "" &&
+            isNumber($("#quantity").val()) && $("#quantity").val() > 0) {
             $("#submit-btn").removeAttr("disabled");
         } else {
             $("#submit-btn").attr("disabled", "disabled");
@@ -113,6 +114,10 @@ function enableAddBtnToggling() {
 
         return true;
     });
+
+    function isNumber(potentialNumber) {
+        return Number.isInteger(Number.toInteger(potentialNumber));
+    }
 
     function setQuantityTo1() {
         if (!$("#quantity").val()) $("#quantity").val(1);
