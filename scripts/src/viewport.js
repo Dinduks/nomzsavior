@@ -84,11 +84,8 @@ function setDateToTomorrow() {
 function resetForm() {
     $("#title").val("");
     $("#quantity").val("");
-    setDateToTomorrow();
 
-    // setTimeout(function () {
-        $("#title").get(0).focus();
-    // }, 1000);
+    $("#title").get(0).focus();
 }
 
 /**
@@ -108,7 +105,6 @@ function enableAddBtnToggling() {
     });
 
     $("#quantity").on("keyup", function () {
-        console.log($(this).val());
         if (Number.isInteger(Number.toInteger($(this).val())) && $(this).val() > 0) {
             $("#submit-btn").removeAttr("disabled");
         } else {
