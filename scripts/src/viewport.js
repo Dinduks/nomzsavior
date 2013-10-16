@@ -107,6 +107,17 @@ function enableAddBtnToggling() {
         return true;
     });
 
+    $("#quantity").on("keyup", function () {
+        console.log($(this).val());
+        if (Number.isInteger(Number.toInteger($(this).val())) && $(this).val() > 0) {
+            $("#submit-btn").removeAttr("disabled");
+        } else {
+            $("#submit-btn").attr("disabled", "disabled");
+        }
+
+        return true;
+    });
+
     function setQuantityTo1() {
         if (!$("#quantity").val()) $("#quantity").val(1);
     }
